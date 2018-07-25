@@ -484,7 +484,7 @@ public class D_Model {
             ResultSet rs = call.executeQuery();
             while (rs.next()) {
                 Sale a = new Sale();
-                a.setSaleId(rs.getInt("Ma_Giam_Gia"));
+                a.setSaleid(rs.getInt("Ma_Giam_Gia"));
                 a.setDateInput(rs.getDate("Ngay_bat_dau"));          
                 a.setDateOutput(rs.getDate("Ngay_ket_thuc"));
                 a.setLevelSale(rs.getInt("Muc_do_giam_gia"));          

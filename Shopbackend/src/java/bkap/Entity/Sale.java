@@ -12,27 +12,28 @@ import java.sql.Date;
  * @author ScorPius 31
  */
 public class Sale {
-    private int saleId;
+
+    private int saleid;
     private Date dateInput;
     private Date dateOutput;
     private int levelSale;
 
-    public Sale() {
-    }
-
-    public Sale(int saleId, Date dateInput, Date dateOutput, int levelSale) {
-        this.saleId = saleId;
+    public Sale(int saleid, Date dateInput, Date dateOutput, int levelSale) {
+        this.saleid = saleid;
         this.dateInput = dateInput;
         this.dateOutput = dateOutput;
         this.levelSale = levelSale;
     }
 
-    public int getSaleId() {
-        return saleId;
+    public Sale() {
     }
 
-    public void setSaleId(int saleId) {
-        this.saleId = saleId;
+    public int getSaleid() {
+        return saleid;
+    }
+
+    public void setSaleid(int saleid) {
+        this.saleid = saleid;
     }
 
     public Date getDateInput() {
@@ -58,5 +59,5 @@ public class Sale {
     public void setLevelSale(int levelSale) {
         this.levelSale = levelSale;
     }
-    
+
 }
