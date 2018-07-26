@@ -230,7 +230,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" align="right">
-                                                <input type="submit" value="Create"/>
+                                                <input type="submit" value="Update"/>
                                                 <input type="reset" value="Reset"/>
                                                 <input type="button" value="Back" onclick="history.go(-1)"/>
                                             </td>

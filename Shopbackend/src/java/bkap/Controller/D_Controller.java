@@ -268,4 +268,53 @@ public class D_Controller {
             return "error";
         }
     }
+    
+    @RequestMapping(value = "/delete-user")
+    public String deleteUser(int userId){
+        boolean check=d_model.deleteUser(userId);
+        if(check){          
+            return "redirect:admin.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-User")
+    public ModelAndView iUpdateUser(int userId){
+        ModelAndView model=new ModelAndView("updateUser-admin");       
+        UserAdmin useradminUpdate=d_model.getUserById(userId);
+        model.getModelMap().addAttribute("useradminUpdate", useradminUpdate);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-User")
+    public String updateUser(UserAdmin useradmin){
+        boolean check=d_model.UpdateUser(useradmin);
+        if(check){          
+            return "redirect:admin.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iInsert-User")
+    public ModelAndView iIsertUser(){
+        ModelAndView model=new ModelAndView("insertUser-admin");
+        UserAdmin useradminInsert=new UserAdmin();
+        model.getModelMap().addAttribute("useradminInsert", useradminInsert);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-User", method = RequestMethod.POST)
+    public String IsertUser(UserAdmin useradmin){
+        boolean check=d_model.inserUser(useradmin);
+        if(check){          
+            return "redirect:admin.htm";
+        }
+        else{
+            return "error";
+        }
+    }
 }

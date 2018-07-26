@@ -30,6 +30,47 @@
 
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+        <style> 
+            form.example input[type=text] {
+                padding: 5px;
+                font-size: 15px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                float: left;
+                width: 10%;
+                background: #f1f1f1;
+                margin-bottom: 10px;
+                -webkit-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+            form.example input[type=text]:focus {
+                width: 50%;
+            }
+            form.example button {
+                float: left;
+                width: 40px;
+                padding: 5px;
+                background: #2196F3;
+                color: white;
+                font-size: 15px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-left: none;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+
+            form.example button:hover {
+                background: #0b7dda;
+            }
+
+            form.example::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
     </head>
 
     <body class="no-skin">
@@ -157,6 +198,11 @@
 
                         <div class="row">
                             <div class="col-xs-12">
+                                <form class="example" action="">
+                                    <input type="text" placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+
                                 <!-- PAGE CONTENT BEGINS -->
                                 <div class="">         
                                     <table class="table table-bordered">
@@ -171,6 +217,7 @@
                                                 <th>email</th>
                                                 <th>birthday</th>
                                                 <th>role</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -185,11 +232,26 @@
                                                     <td>${admin.email}</td>
                                                     <td>${admin.birthday}</td>
                                                     <td>${admin.role}</td>
+                                                    <td>
+                                                        <div class="hidden-sm hidden-xs action-buttons">
+                                                            <a class="blue" href="#">
+                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                            </a>
+                                                            <a class="green" href="iUpdate-User.htm?userId=${admin.idCustomer}">
+                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                            </a>
+
+                                                            <a class="red" href="delete-user.htm?userId=${admin.idCustomer}">
+                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
                                                 </tr> 
                                             </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
+                                <a href="iInsert-User.htm">Create New Product</a>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->

@@ -449,6 +449,100 @@ public class D_Model {
         return true;
     }
     
+    public UserAdmin getUserById(int userId){
+        Connection conn=null;
+        CallableStatement call=null;
+        UserAdmin user=new UserAdmin();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getUserById(?)}");
+            call.setInt(1, userId);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                user.setIdCustomer(rs.getInt("Ma_khach_hang"));
+                user.setNameCustomer(rs.getString("Ten_khach_hang"));
+                user.setUserName(rs.getString("Ten_dang_nhap"));
+                user.setPassword(rs.getString("Mat_khau"));
+                user.setAddress(rs.getString("Dia_chi"));
+                user.setTelephone(rs.getInt("So_dien_thoai"));
+                user.setEmail(rs.getString("Gmail"));
+                user.setBirthday(rs.getDate("Ngay_sinh"));
+                user.setRole(rs.getInt("Quyen_truy_cap"));               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return user;
+    }
+    
+    public boolean inserUser(UserAdmin userAdmin) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertUser(?,?,?,?,?,?,?,?)}");
+            call.setString(1, userAdmin.getNameCustomer());
+            call.setString(2, userAdmin.getUserName());
+            call.setString(3, userAdmin.getPassword());
+            call.setString(4, userAdmin.getAddress());
+            call.setInt(5, userAdmin.getTelephone());        
+            call.setString(6, userAdmin.getEmail());
+            call.setDate(7, userAdmin.getBirthday());         
+            call.setInt(8, userAdmin.getRole());                 
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateUser(UserAdmin userAdmin) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateUser(?,?,?,?,?,?,?,?,?)}");
+            call.setInt(1, userAdmin.getIdCustomer());
+            call.setString(2, userAdmin.getNameCustomer());
+            call.setString(3, userAdmin.getUserName());
+            call.setString(4, userAdmin.getPassword());
+            call.setString(5, userAdmin.getAddress());
+            call.setInt(6, userAdmin.getTelephone());        
+            call.setString(7, userAdmin.getEmail());
+            call.setDate(8, userAdmin.getBirthday());         
+            call.setInt(9, userAdmin.getRole());   
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean deleteUser(int userId) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteUser(?)}");
+            call.setInt(1, userId);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
     public List<Supplier> getSupplier() {
         Connection conn = null;
         CallableStatement call = null;

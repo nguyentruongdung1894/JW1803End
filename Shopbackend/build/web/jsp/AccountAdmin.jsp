@@ -31,20 +31,6 @@
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
         <style> 
-            .pagination a {
-                color: black;
-                float: left;
-                padding: 8px 16px;
-                text-decoration: none;
-                transition: background-color .3s;
-            }
-
-            .pagination a.active {
-                background-color: dodgerblue;
-                color: white;
-            }
-
-            .pagination a:hover:not(.active) {background-color: #ddd;}
             form.example input[type=text] {
                 padding: 5px;
                 font-size: 15px;
@@ -235,28 +221,27 @@
                                             </tr>
                                         </thead>
                                         <tbody id="id01">
-                                            <c:forEach items="${listAdmin}" var="admin">
+                                            <c:forEach items="${listAdmin}" var="user">
                                                 <tr>
-                                                    <td class="sort">${admin.idCustomer}</td>
-                                                    <td>${admin.nameCustomer}</td>
-                                                    <td>${admin.userName}</td>
-                                                    <td>${admin.password}</td>
-                                                    <td>${admin.address}</td>
-                                                    <td>${admin.telephone}</td>
-                                                    <td>${admin.email}</td>
-                                                    <td>${admin.birthday}</td>
-                                                    <td>${admin.role}</td>
+                                                    <td class="sort">${user.idCustomer}</td>
+                                                    <td>${user.nameCustomer}</td>
+                                                    <td>${user.userName}</td>
+                                                    <td>${user.password}</td>
+                                                    <td>${user.address}</td>
+                                                    <td>${user.telephone}</td>
+                                                    <td>${user.email}</td>
+                                                    <td>${user.birthday}</td>
+                                                    <td>${user.role}</td>
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                             <a class="blue" href="#">
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
-
-                                                            <a class="green" href="#">
+                                                            <a class="green" href="iUpdate-User.htm?userId=${user.idCustomer}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="red" href="#">
+                                                            <a class="red" href="delete-user.htm?userId=${user.idCustomer}">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                         </div>
@@ -266,16 +251,7 @@
                                         </tbody>
                                     </table>
                                 </div>    
-                                <div class="pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a class="active" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
+                                <a href="iInsert-User.htm">Create New Product</a>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->

@@ -270,11 +270,11 @@
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
 
-                                                            <a class="green" href="#">
+                                                            <a class="green" href="iUpdate.htm?productId=${M.productId}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="red" href="#">
+                                                            <a class="red" href="delete-product.htm?productId=${M.productId}">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                         </div>
@@ -283,7 +283,8 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                </div>    
+                                </div>  
+                                <a href="iInsert.htm">Create New Product</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

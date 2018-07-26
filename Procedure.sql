@@ -156,7 +156,7 @@ END
 
 --Xóa sản phẩm
 CREATE procedure DeleteProduct
-@productId varchar(50)
+@productId int
 AS
 BEGIN
 	DELETE dbo.SanPham
@@ -185,7 +185,7 @@ END
 
 --Sửa sản phẩm
 CREATE PROC UpdateProduct
-@productId varchar(50),
+@productId int,
 @madmc int,
 @nameProduct NVARCHAR(50),
 @image VARCHAR(100),
@@ -215,6 +215,66 @@ BEGIN
 	Trang_Thai=@trangthai
 	WHERE Ma_san_pham=@productId
 END
+
+--Test: Exec getUserById 2
+CREATE PROC getUserById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Khach_hang kh WHERE kh.Ma_khach_hang=@Id 
+END
+
+---Xoa USER-------------------------
+CREATE procedure DeleteUser
+@userId int
+AS
+BEGIN
+	DELETE dbo.Khach_hang
+	WHERE Ma_khach_hang=@userId
+END
+
+--Tạo user moi
+CREATE procedure InsertUser
+@nameuser NVARCHAR(20),
+@username NVARCHAR(20),
+@password NVARCHAR(20),
+@address NVARCHAR(50),
+@phone int,
+@gmail VARCHAR(20),
+@date DATE,
+@role INT
+as
+BEGIN
+	insert into dbo.Khach_hang
+	values(@nameuser,@username, @password, @address, @phone, @gmail, @date, @role);
+END
+
+--Sửa user
+CREATE PROC UpdateUser
+@iduser int,
+@nameuser NVARCHAR(20),
+@username NVARCHAR(20),
+@password NVARCHAR(20),
+@address NVARCHAR(50),
+@phone int,
+@gmail VARCHAR(20),
+@date DATE,
+@role INT
+AS
+BEGIN
+	UPDATE dbo.Khach_hang
+	SET Ten_khach_hang=@nameuser,
+		Ten_dang_nhap =@username,
+		Mat_khau=@password,
+		Dia_chi =@address,
+		So_dien_thoai=@phone,
+		Gmail =@gmail,
+		Ngay_sinh=@date,
+		Quyen_truy_cap =@role
+	
+	WHERE Ma_khach_hang=@iduser
+END
+
 
 CREATE PROCEDURE [dbo].[SP_DisplayPageNo]
 	@CurrentPage int ,
@@ -325,3 +385,5 @@ as
 BEGIN
 	SELECT * FROM dbo.Khuyenmai
 END
+
+
