@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Ace User</title>
+        <title>Product - admin</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -31,8 +31,7 @@
 
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
-        <style> 
+        <style>
             form.example input[type=text] {
                 padding: 5px;
                 font-size: 15px;
@@ -106,7 +105,7 @@
                             <li>
                                 <a href="">Tables</a>
                             </li>
-                            <li class="active">jqGrid plugin</li>
+                            <li class="active">Product - admin</li>
                         </ul><!-- /.breadcrumb -->
 
                         <div class="nav-search" id="nav-search">
@@ -189,60 +188,84 @@
 
                         <div class="page-header">
                             <h1>
-                                User
+                                Product
                                 <small>
                                     <i class="ace-icon fa fa-angle-double-right"></i>
-                                    Dynamic tables and grids using User plugin
+                                    Dynamic tables and grids using Product plugin
                                 </small>
                             </h1>
                         </div><!-- /.page-header -->
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <f:form class="example" action="searchuser.htm" method="POST" modelAttribute="searchuser">                               
+                                <!-- PAGE CONTENT BEGINS -->
+
+
+                                <f:form class="example" action="search.htm" method="POST" modelAttribute="usersearch">                               
                                     <f:input path="str" type="text" placeholder="Search.." name="search"/>
                                     <button type="submit"><i class="fa fa-search"></i></button>
                                 </f:form>
+                                
+                                <div class="">
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Click Me...!
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="productMen-admin.htm">Men's wear</a></li>
+                                            <li><a href="productWomen-admin.htm">Women's wear</a></li>
+                                            <li><a href="productBag-admin.htm">Bag</a></li>
+                                            <li><a href="productFootwear-admin.htm">Footwear</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
 
-                                <!-- PAGE CONTENT BEGINS -->
-                                <div class="">         
+                                <div class="">          
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
-                                                <th>idCustomer</th>
-                                                <th>nameCustomer</th>
-                                                <th>userName</th>
-                                                <th>password</th>
-                                                <th>address</th>
-                                                <th>telephone</th>
-                                                <th>email</th>
-                                                <th>birthday</th>
-                                                <th>role</th>
+                                                <th>Id</th>
+                                                <th>References</th>
+                                                <th>Ten_san_pham</th>
+                                                <th>Image</th>
+                                                <th>Input Date</th>
+                                                <th>Image-Id</th>
+                                                <th>Quantity</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Sale-Id</th>
+                                                <th>View</th>
+                                                <th>Supplier</th>
+                                                <th>Status</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <c:forEach items="${listUser}" var="admin">
+                                        <tbody id="id01">
+                                            <c:forEach items="${prosearch}" var="P">
                                                 <tr>
-                                                    <td>${admin.idCustomer}</td>
-                                                    <td>${admin.nameCustomer}</td>
-                                                    <td>${admin.userName}</td>
-                                                    <td>${admin.password}</td>
-                                                    <td>${admin.address}</td>
-                                                    <td>${admin.telephone}</td>
-                                                    <td>${admin.email}</td>
-                                                    <td>${admin.birthday}</td>
-                                                    <td>${admin.role}</td>
+                                                    <td>${P.productId}</td>
+                                                    <td>${P.categoryId}</td>
+                                                    <td>${P.productName}</td>
+                                                    <td>${P.productImage}</td>
+                                                    <td>${P.date}</td>
+                                                    <td>${P.imageId}</td>
+                                                    <td>${P.quantity}</td>
+                                                    <td>${P.description}</td>
+                                                    <td>${P.price}</td>
+                                                    <td>${P.saleId}</td>
+                                                    <td>${P.view}</td>
+                                                    <td>${P.supplier}</td>                                                    
+                                                    <td>${P.status}</td>
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                             <a class="blue" href="#">
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
-                                                            <a class="green" href="iUpdate-User.htm?userId=${admin.idCustomer}">
+
+                                                            <a class="green" href="iUpdate.htm?productId=${P.productId}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="red" href="delete-user.htm?userId=${admin.idCustomer}">
+                                                            <a class="red" href="delete-product.htm?productId=${P.productId}">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                         </div>
@@ -251,8 +274,8 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                </div>
-                                <a href="iInsert-User.htm">Create New Product</a>
+                                </div>    
+                                <a href="iInsert.htm">Create New Product</a>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->
@@ -266,6 +289,7 @@
                 <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
             </a>
         </div><!-- /.main-container -->
+
         <script src="../jsp/assets/js/jquery.2.1.1.min.js"></script>
 
         <script type="text/javascript">
@@ -286,5 +310,7 @@
         <!-- ace scripts -->
         <script src="../jsp/assets/js/ace-elements.min.js"></script>
         <script src="../jsp/assets/js/ace.min.js"></script>
+
+
     </body>
 </html>

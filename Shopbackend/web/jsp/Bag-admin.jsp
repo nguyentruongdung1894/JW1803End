@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,25 +201,13 @@
                                 <!-- PAGE CONTENT BEGINS -->
 
 
-                                <form class="example" action="">
-                                    <input type="text" placeholder="Search.." name="search">
+                                <f:form class="example" action="search.htm" method="POST" modelAttribute="usersearch">                               
+                                    <f:input path="str" type="text" placeholder="Search.." name="search"/>
                                     <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
+                                </f:form>
+                                
                                 <div class="">
-<!--                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Filters
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-header">Men's wear</li>
-                                                <c:forEach items="${listBannerMen}" var="M">
-                                                <li><a href="#">${M.tendanhmuccon}</a></li>
-                                                </c:forEach>
-                                            <li class="dropdown-header">Women's wear</li>
-                                                <c:forEach items="${listBannerWomen}" var="W">
-                                                <li><a href="#">${W.tendanhmuccon}</a></li>
-                                                </c:forEach>
-                                        </ul>
-                                    </div>-->
+
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Click Me...!
                                             <span class="caret"></span></button>

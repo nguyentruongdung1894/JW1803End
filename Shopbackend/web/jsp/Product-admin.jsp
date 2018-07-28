@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,10 +201,11 @@
                                 <!-- PAGE CONTENT BEGINS -->
 
 
-                                <form class="example" action="">
-                                    <input type="text" placeholder="Search.." name="search">
+                                <f:form class="example" action="search.htm" method="POST" modelAttribute="usersearch">                               
+                                    <f:input path="str" type="text" placeholder="Search.." name="search"/>
                                     <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
+                                </f:form>
+                                
                                 <div class="">
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Click Me...!

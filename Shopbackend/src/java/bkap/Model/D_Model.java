@@ -10,6 +10,7 @@ import bkap.Connection.Pagination;
 import bkap.Entity.D_banner;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
+import bkap.Entity.Search;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import java.sql.CallableStatement;
@@ -590,5 +591,69 @@ public class D_Model {
             D_Connection.closeDataBase(conn, call);
         }
         return sale;
+    }
+    
+    public List<ProductAdmin> search(Search str) {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<ProductAdmin> search = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call search(?)}");
+            call.setString(1, str.getStr());
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                ProductAdmin pro = new ProductAdmin();
+                pro.setProductId(rs.getInt("Ma_san_pham"));
+                pro.setCategoryId(rs.getInt("Ma_danh_muc_con"));
+                pro.setProductName(rs.getString("Ten_san_pham"));
+                pro.setProductImage(rs.getString("Hinh_anh"));
+                pro.setDate(rs.getDate("Ngay_Nhap"));
+                pro.setImageId(rs.getInt("Ma_hinh_anh"));
+                pro.setQuantity(rs.getInt("So_luong"));
+                pro.setDescription(rs.getString("Mo_ta"));
+                pro.setPrice(rs.getFloat("Don_gia"));
+                pro.setSaleId(rs.getInt("Ma_Giam_Gia"));
+                pro.setView(rs.getInt("Luot_xem"));
+                pro.setSupplier(rs.getInt("Ma_nha_cung_cap"));
+                pro.setStatus(rs.getBoolean("Trang_Thai"));
+                search.add(pro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return search;
+    }
+    
+    public List<UserAdmin> searchUser(Search str) {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<UserAdmin> searchUser = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call searchUser(?)}");
+            call.setString(1, str.getStr());
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                UserAdmin pro = new UserAdmin();
+                pro.setIdCustomer(rs.getInt("Ma_khach_hang"));
+                pro.setNameCustomer(rs.getString("Ten_khach_hang"));
+                pro.setUserName(rs.getString("Ten_dang_nhap"));
+                pro.setPassword(rs.getString("Mat_khau"));
+                pro.setAddress(rs.getString("Dia_chi"));
+                pro.setTelephone(rs.getInt("So_dien_thoai"));
+                pro.setEmail(rs.getString("Gmail"));
+                pro.setBirthday(rs.getDate("Ngay_sinh"));
+                pro.setRole(rs.getInt("Quyen_truy_cap"));
+                searchUser.add(pro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return searchUser;
     }
 }

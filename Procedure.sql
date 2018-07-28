@@ -18,6 +18,7 @@ BEGIN
 	WHERE  tblDemo.RowIndex BETWEEN @FromIndex AND @ToIndex
 END
 
+
 --lấy sản phẩm nam
 CREATE PROC getProductMen
 AS
@@ -386,4 +387,21 @@ BEGIN
 	SELECT * FROM dbo.Khuyenmai
 END
 
+--Test: Exec search men
+ALTER PROC search
+@string nvarchar(50)
+AS
+BEGIN
+	SELECT * FROM dbo.SanPham sp
+    WHERE sp.Ten_san_pham LIKE '%'+@string+'%' AND sp.Trang_Thai=1
+END
 
+
+--Test: Exec searchUser d
+ALTER PROC searchUser
+@string nvarchar(20)
+AS
+BEGIN
+	SELECT * FROM dbo.Khach_hang kh
+    WHERE kh.Ten_khach_hang LIKE '%'+@string+'%' 
+END

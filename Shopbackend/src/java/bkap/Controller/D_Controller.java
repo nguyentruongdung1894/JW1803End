@@ -9,6 +9,7 @@ import bkap.Connection.D_Connection;
 import bkap.Entity.D_banner;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
+import bkap.Entity.Search;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import bkap.Model.D_Model;
@@ -46,8 +47,10 @@ public class D_Controller {
 
     @RequestMapping(value = "/admin")
     public ModelAndView getAdmin() {
-        ModelAndView model = new ModelAndView("AccountAdmin");
-        List<UserAdmin> listAdmin = d_model.getAdmin();
+        ModelAndView model = new ModelAndView("AccountAdmin");       
+        List<UserAdmin> listAdmin = d_model.getAdmin();    
+        Search searchuser=new Search();       
+        model.getModelMap().addAttribute("searchuser", searchuser);
         model.addObject("listAdmin", listAdmin);
         return model;
     }
@@ -56,6 +59,8 @@ public class D_Controller {
     public ModelAndView getUser() {
         ModelAndView model = new ModelAndView("AccountUser");
         List<UserAdmin> listUser = d_model.getUser();
+        Search searchuser=new Search();       
+        model.getModelMap().addAttribute("searchuser", searchuser);
         model.addObject("listUser", listUser);
         return model;
     }
@@ -65,7 +70,9 @@ public class D_Controller {
         ModelAndView model = new ModelAndView("Men-admin");
         List<ProductAdmin> listMadmin = d_model.getProductMen();
         List<D_banner> listBannerMen = d_model.getBannerMen();
-        List<D_banner> listBannerWomen = d_model.getBannerWomen();
+        List<D_banner> listBannerWomen = d_model.getBannerWomen();    
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listMadmin", listMadmin);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
@@ -78,6 +85,8 @@ public class D_Controller {
         List<ProductAdmin> listWadmin = d_model.getProductWomen();
         List<D_banner> listBannerMen = d_model.getBannerMen();
         List<D_banner> listBannerWomen = d_model.getBannerWomen();
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listWadmin", listWadmin);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
@@ -90,6 +99,8 @@ public class D_Controller {
         List<ProductAdmin> listBadmin = d_model.getProductBag();
         List<D_banner> listBannerMen = d_model.getBannerMen();
         List<D_banner> listBannerWomen = d_model.getBannerWomen();
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listBadmin", listBadmin);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
@@ -102,6 +113,8 @@ public class D_Controller {
         List<ProductAdmin> listFadmin = d_model.getProductFootwear();
         List<D_banner> listBannerMen = d_model.getBannerMen();
         List<D_banner> listBannerWomen = d_model.getBannerWomen();
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listFadmin", listFadmin);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
@@ -142,6 +155,8 @@ public class D_Controller {
             CallableStatement callSt = (CallableStatement) map.get("callSt");
             D_Connection.closeDataBase(conn, callSt);
         }
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.getModelMap().put("listProduct", listProduct);
         model.getModelMap().put("url", url);
         return model;
@@ -194,6 +209,8 @@ public class D_Controller {
         List<D_banner> listBannerMen = d_model.getBannerMen();
         List<D_banner> listBannerWomen = d_model.getBannerWomen();
         List<ProductAdmin> listProductM=d_model.getProductMenById(productMenById);
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
         model.addObject("listProductM", listProductM);
@@ -206,6 +223,8 @@ public class D_Controller {
         List<D_banner> listBannerMen = d_model.getBannerMen();
         List<D_banner> listBannerWomen = d_model.getBannerWomen();
         List<ProductAdmin> listProductW=d_model.getProductWomenById(productWomenById);
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.addObject("listBannerMen", listBannerMen);
         model.addObject("listBannerWomen", listBannerWomen);
         model.addObject("listProductW", listProductW);
@@ -316,5 +335,25 @@ public class D_Controller {
         else{
             return "error";
         }
+    }
+    
+    @RequestMapping(value = "/search")
+    public ModelAndView search(Search str){
+        ModelAndView model=new ModelAndView("search");    
+        Search usersearch=new Search();
+        List<ProductAdmin> prosearch=d_model.search(str);    
+        model.getModelMap().addAttribute("usersearch", usersearch);
+        model.addObject("prosearch", prosearch);
+        return model;
+    }
+    
+    @RequestMapping(value = "/searchuser")
+    public ModelAndView searchuser(Search str){
+        ModelAndView model=new ModelAndView("searchUser");    
+        Search searchuser=new Search();
+        List<UserAdmin> search=d_model.searchUser(str);    
+        model.getModelMap().addAttribute("searchuser", searchuser);
+        model.addObject("search", search);
+        return model;
     }
 }

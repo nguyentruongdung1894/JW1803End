@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Ace User</title>
+        <title>Ace Admin</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -31,7 +31,6 @@
 
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
         <style> 
             form.example input[type=text] {
                 padding: 5px;
@@ -189,23 +188,24 @@
 
                         <div class="page-header">
                             <h1>
-                                User
+                                Admin
                                 <small>
                                     <i class="ace-icon fa fa-angle-double-right"></i>
-                                    Dynamic tables and grids using User plugin
+                                    Dynamic tables and grids using Admin plugin
                                 </small>
                             </h1>
                         </div><!-- /.page-header -->
 
                         <div class="row">
                             <div class="col-xs-12">
+                                <!-- PAGE CONTENT BEGINS -->
+                                
                                 <f:form class="example" action="searchuser.htm" method="POST" modelAttribute="searchuser">                               
                                     <f:input path="str" type="text" placeholder="Search.." name="search"/>
                                     <button type="submit"><i class="fa fa-search"></i></button>
                                 </f:form>
 
-                                <!-- PAGE CONTENT BEGINS -->
-                                <div class="">         
+                                <div class="">          
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
@@ -221,37 +221,37 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <c:forEach items="${listUser}" var="admin">
+                                        <tbody id="id01">
+                                            <c:forEach items="${search}" var="user">
                                                 <tr>
-                                                    <td>${admin.idCustomer}</td>
-                                                    <td>${admin.nameCustomer}</td>
-                                                    <td>${admin.userName}</td>
-                                                    <td>${admin.password}</td>
-                                                    <td>${admin.address}</td>
-                                                    <td>${admin.telephone}</td>
-                                                    <td>${admin.email}</td>
-                                                    <td>${admin.birthday}</td>
-                                                    <td>${admin.role}</td>
+                                                    <td class="sort">${user.idCustomer}</td>
+                                                    <td>${user.nameCustomer}</td>
+                                                    <td>${user.userName}</td>
+                                                    <td>${user.password}</td>
+                                                    <td>${user.address}</td>
+                                                    <td>${user.telephone}</td>
+                                                    <td>${user.email}</td>
+                                                    <td>${user.birthday}</td>
+                                                    <td>${user.role}</td>
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
                                                             <a class="blue" href="#">
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
-                                                            <a class="green" href="iUpdate-User.htm?userId=${admin.idCustomer}">
+                                                            <a class="green" href="iUpdate-User.htm?userId=${user.idCustomer}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="red" href="delete-user.htm?userId=${admin.idCustomer}">
+                                                            <a class="red" href="delete-user.htm?userId=${user.idCustomer}">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                         </div>
                                                     </td>
-                                                </tr> 
+                                                </tr>                                               
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div>    
                                 <a href="iInsert-User.htm">Create New Product</a>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
@@ -266,6 +266,7 @@
                 <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
             </a>
         </div><!-- /.main-container -->
+
         <script src="../jsp/assets/js/jquery.2.1.1.min.js"></script>
 
         <script type="text/javascript">
@@ -286,5 +287,6 @@
         <!-- ace scripts -->
         <script src="../jsp/assets/js/ace-elements.min.js"></script>
         <script src="../jsp/assets/js/ace.min.js"></script>
+
     </body>
 </html>

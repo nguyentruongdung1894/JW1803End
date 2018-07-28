@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,10 +199,10 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <form class="example" action="">
-                                    <input type="text" placeholder="Search.." name="search">
+                                <f:form class="example" action="searchuser.htm" method="POST" modelAttribute="searchuser">                               
+                                    <f:input path="str" type="text" placeholder="Search.." name="search"/>
                                     <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
+                                </f:form>
 
                                 <!-- PAGE CONTENT BEGINS -->
                                 <div class="">         
