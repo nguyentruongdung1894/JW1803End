@@ -199,6 +199,8 @@ public class D_Controller {
             D_Connection.closeDataBase(conn, callSt);
         }
         model.getModelMap().put("listProduct", listProduct);
+        Search usersearch=new Search();       
+        model.getModelMap().addAttribute("usersearch", usersearch);
         model.getModelMap().put("url", url);
         return model;
     }

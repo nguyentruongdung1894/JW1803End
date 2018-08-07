@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="new_arrivals_agile_w3ls_info"> 
@@ -36,8 +37,11 @@
                                 </div>
                                 <div class="item-info-product ">
                                     <h4><a href="single.html">${pro.productName}</a></h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">${pro.price}</span>
+                                    <div class="info-product-price">                                      
+                                        <span class="item_price">
+                                            <fmt:setLocale value = "en_US"/>
+                                            <fmt:formatNumber type = "currency">${pro.price-pro.price*pro.salelevel/100}</fmt:formatNumber>
+                                        </span>
                                         <del>${pro.price}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
@@ -47,8 +51,8 @@
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
                                                 <input type="hidden" name="item_name" value="${pro.productName}" />
-                                                <input type="hidden" name="amount" value="${pro.price}" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="amount" value="${pro.price}" />                                            
+                                                <input type="hidden" name="discount_amount" value="${pro.price*pro.salelevel/100}" />
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
@@ -82,21 +86,21 @@
                                 <div class="item-info-product ">
                                     <h4><a href="single.html">${pro.productName}</a></h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">${pro.price}</span>
+                                        <span class="item_price">${pro.price-pro.price*pro.salelevel/100}</span>
                                         <del>${pro.price}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
                                         <form action="#" method="post">
                                             <fieldset>
-<!--                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="A-line Black Skirt" />
-                                                <input type="hidden" name="amount" value="30.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="item_name" value="${pro.productName}" />
+                                                <input type="hidden" name="amount" value="${pro.price}" />
+                                                <input type="hidden" name="discount_amount" value="${pro.price*pro.salelevel/100}" />
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />-->
+                                                <input type="hidden" name="cancel_return" value=" " />
                                                 <input type="submit" name="submit" value="Add to cart" class="button" />
                                             </fieldset>
                                         </form>
@@ -126,21 +130,21 @@
                                 <div class="item-info-product ">
                                     <h4><a href="single.html">${pro.productName}</a></h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">${pro.price}</span>
+                                        <span class="item_price">${pro.price-pro.price*pro.salelevel/100}</span>
                                         <del>${pro.price}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
                                         <form action="#" method="post">
                                             <fieldset>
-<!--                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value=" Laptop Messenger Bag" />
-                                                <input type="hidden" name="amount" value="30.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="item_name" value="${pro.productName}" />
+                                                <input type="hidden" name="amount" value="${pro.price}" />
+                                                <input type="hidden" name="discount_amount" value="${pro.price*pro.salelevel/100}" />
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />-->
+                                                <input type="hidden" name="cancel_return" value=" " />
                                                 <input type="submit" name="submit" value="Add to cart" class="button" />
                                             </fieldset>
                                         </form>
@@ -169,21 +173,21 @@
                                 <div class="item-info-product ">
                                     <h4><a href="single.html">Running Shoes</a></h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">${pro.price}</span>
+                                        <span class="item_price">${pro.price-pro.price*pro.salelevel/100}</span>
                                         <del>${pro.price}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
                                         <form action="#" method="post">
                                             <fieldset>
-<!--                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Running Shoes" />
-                                                <input type="hidden" name="amount" value="30.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="item_name" value="${pro.productName}" />
+                                                <input type="hidden" name="amount" value="${pro.price}" />
+                                                <input type="hidden" name="discount_amount" value="${pro.price*pro.salelevel/100}" />
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />-->
+                                                <input type="hidden" name="cancel_return" value=" " />
                                                 <input type="submit" name="submit" value="Add to cart" class="button" />
                                             </fieldset>
                                         </form>

@@ -135,7 +135,8 @@ public class D_Model {
                 pro.setProductId(rs.getInt("Ma_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setProductName(rs.getString("Ten_san_pham"));
-                pro.setPrice(rs.getFloat("Don_gia"));               
+                pro.setPrice(rs.getFloat("Don_gia"));    
+                pro.setSalelevel(rs.getInt("Muc_do_giam_gia"));
                 listMen.add(pro);
             }
         } catch (Exception e) {
@@ -159,7 +160,8 @@ public class D_Model {
                 pro.setProductId(rs.getInt("Ma_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setProductName(rs.getString("Ten_san_pham"));
-                pro.setPrice(rs.getFloat("Don_gia"));               
+                pro.setPrice(rs.getFloat("Don_gia"));   
+                pro.setSalelevel(rs.getInt("Muc_do_giam_gia"));
                 listWomen.add(pro);
             }
         } catch (Exception e) {
@@ -183,7 +185,8 @@ public class D_Model {
                 pro.setProductId(rs.getInt("Ma_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setProductName(rs.getString("Ten_san_pham"));
-                pro.setPrice(rs.getFloat("Don_gia"));               
+                pro.setPrice(rs.getFloat("Don_gia"));    
+                pro.setSalelevel(rs.getInt("Muc_do_giam_gia"));
                 listBag.add(pro);
             }
         } catch (Exception e) {
@@ -207,7 +210,8 @@ public class D_Model {
                 pro.setProductId(rs.getInt("Ma_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setProductName(rs.getString("Ten_san_pham"));
-                pro.setPrice(rs.getFloat("Don_gia"));               
+                pro.setPrice(rs.getFloat("Don_gia"));  
+                pro.setSalelevel(rs.getInt("Muc_do_giam_gia"));
                 listFootwear.add(pro);
             }
         } catch (Exception e) {

@@ -1,5 +1,5 @@
 ﻿--Test: Exec Pagination 2
-ALTER PROC Pagination
+CREATE PROC Pagination
 --Đang ở trang thứ bao nhiêu
 @PageIndex INT
 --Số bản ghi tối đa trên 1 trang
@@ -24,7 +24,8 @@ CREATE PROC getProductMen
 AS
 BEGIN
 	SELECT TOP 8 * FROM dbo.SanPham sp INNER JOIN dbo.Danhmuccon dmc ON dmc.Ma_danh_muc_con = sp.Ma_danh_muc_con
-		INNER JOIN dbo.Danhmuccha dm ON dm.Ma_danh_muc_cha = dmc.Ma_danh_muc_cha
+		INNER JOIN dbo.Danhmuccha dm ON dm.Ma_danh_muc_cha = dmc.Ma_danh_muc_cha 
+		INNER JOIN dbo.Khuyenmai km ON km.Ma_Giam_Gia = sp.Ma_Giam_Gia
 	WHERE dm.Ma_danh_muc_cha=1 AND sp.Trang_Thai=1 ORDER BY sp.Ngay_Nhap DESC
 END
 
@@ -34,6 +35,7 @@ AS
 BEGIN
 	SELECT TOP 8 * FROM dbo.SanPham sp INNER JOIN dbo.Danhmuccon dmc ON dmc.Ma_danh_muc_con = sp.Ma_danh_muc_con
 		INNER JOIN dbo.Danhmuccha dm ON dm.Ma_danh_muc_cha = dmc.Ma_danh_muc_cha
+		INNER JOIN dbo.Khuyenmai km ON km.Ma_Giam_Gia = sp.Ma_Giam_Gia
 		WHERE dm.Ma_danh_muc_cha=2 AND sp.Trang_Thai=1 ORDER BY sp.Ngay_Nhap DESC
 END
 
@@ -43,6 +45,7 @@ AS
 BEGIN
 	SELECT TOP 8 * FROM dbo.SanPham sp INNER JOIN dbo.Danhmuccon dmc ON dmc.Ma_danh_muc_con = sp.Ma_danh_muc_con
 		INNER JOIN dbo.Danhmuccha dm ON dm.Ma_danh_muc_cha = dmc.Ma_danh_muc_cha
+		INNER JOIN dbo.Khuyenmai km ON km.Ma_Giam_Gia = sp.Ma_Giam_Gia
 		WHERE dm.Ma_danh_muc_cha=3 AND sp.Trang_Thai=1 ORDER BY sp.Ngay_Nhap DESC
 END
 
@@ -52,6 +55,7 @@ AS
 BEGIN
 	SELECT TOP 8 * FROM dbo.SanPham sp INNER JOIN dbo.Danhmuccon dmc ON dmc.Ma_danh_muc_con = sp.Ma_danh_muc_con
 		INNER JOIN dbo.Danhmuccha dm ON dm.Ma_danh_muc_cha = dmc.Ma_danh_muc_cha
+		INNER JOIN dbo.Khuyenmai km ON km.Ma_Giam_Gia = sp.Ma_Giam_Gia
 		WHERE dm.Ma_danh_muc_cha=4 AND sp.Trang_Thai=1 ORDER BY sp.Ngay_Nhap DESC
 END
 
@@ -388,7 +392,7 @@ BEGIN
 END
 
 --Test: Exec search men
-ALTER PROC search
+CREATE PROC search
 @string nvarchar(50)
 AS
 BEGIN
@@ -398,10 +402,19 @@ END
 
 
 --Test: Exec searchUser d
-ALTER PROC searchUser
+CREATE PROC searchUser
 @string nvarchar(20)
 AS
 BEGIN
 	SELECT * FROM dbo.Khach_hang kh
     WHERE kh.Ten_khach_hang LIKE '%'+@string+'%' 
+END
+
+
+CREATE PROC getComment
+AS
+BEGIN
+	SELECT bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
+	WHERE bl.Trang_thai=1 AND sp.Trang_Thai=1
 END

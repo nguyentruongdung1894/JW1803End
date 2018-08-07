@@ -25,11 +25,12 @@ public class Product {
     private int supplier;
     private Date date;
     private boolean status;
+    private int salelevel;
 
     public Product() {
     }
 
-    public Product(int productId, int categoryId, String productName, String productImage, int imageId, int quantity, String description, float price, int saleId, int view, int supplier, Date date, boolean status) {
+    public Product(int productId, int categoryId, String productName, String productImage, int imageId, int quantity, String description, float price, int saleId, int view, int supplier, Date date, boolean status, int salelevel) {
         this.productId = productId;
         this.categoryId = categoryId;
         this.productName = productName;
@@ -43,6 +44,15 @@ public class Product {
         this.supplier = supplier;
         this.date = date;
         this.status = status;
+        this.salelevel = salelevel;
+    }
+
+    public int getSalelevel() {
+        return salelevel;
+    }
+
+    public void setSalelevel(int salelevel) {
+        this.salelevel = salelevel;
     }
 
     public int getProductId() {

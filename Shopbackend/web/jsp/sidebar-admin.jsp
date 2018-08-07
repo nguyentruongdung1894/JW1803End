@@ -87,36 +87,70 @@
         <li class="">
             <a href="getData.htm">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Product</span>
+                <span class="menu-text">Quản lí sản phẩm</span>
             </a>
         </li>
 
         <li class="">
-            <a href="#" class="dropdown-toggle">
+            <a href="Menu.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí tin tức</span>
-
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-
-            <b class="arrow"></b>
-
-            <ul class="submenu">
-                <li class="">
-                    <a href="jqgrid.html">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Simple &amp; Dynamic
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-            </ul>	
+            </a>	
         </li>
 
         <li class="">
             <a href="Menu.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí hóa đơn</span>
+            </a>	
+        </li>
+        
+         <li class="">
+            <a href="Menu.html">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"> Quản lí hóa đơn chi tiết</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí bình luận</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí Ưa thích</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí size</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí màu sắc</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí phương thức thanh toán</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí Ship</span>
             </a>	
         </li>
 
