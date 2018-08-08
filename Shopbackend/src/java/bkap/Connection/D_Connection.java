@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class D_Connection {
     public static final String DRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static final String URL="jdbc:sqlserver://SCORPIUS-31\\SQLEXPRESS:51928;databaseName=ProjectEnd";
+    public static final String URL="jdbc:sqlserver://SCORPIUS-31\\SQLEXPRESS:51928;databaseName=ProjectCuoiKhoa";
     public static final String USER="sa";
     public static final String PASS="Dungvn14141999";
     

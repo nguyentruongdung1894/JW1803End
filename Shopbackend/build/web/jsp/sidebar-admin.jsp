@@ -90,30 +90,51 @@
                 <span class="menu-text">Quản lí sản phẩm</span>
             </a>
         </li>
-
+        
         <li class="">
-            <a href="Menu.html">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí nhà cung cấp</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"> Quản lí khuyến mại</span>
+            </a>	
+        </li>
+        
+         <li class="">
+            <a href="">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"> Quản lí danh mục ảnh</span>
+            </a>	
+        </li>
+        
+        <li class="">
+            <a href="">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí tin tức</span>
             </a>	
         </li>
 
         <li class="">
-            <a href="Menu.html">
+            <a href="">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí hóa đơn</span>
             </a>	
         </li>
         
          <li class="">
-            <a href="Menu.html">
+            <a href="">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí hóa đơn chi tiết</span>
             </a>	
         </li>
         
         <li class="">
-            <a href="">
+            <a href="getcomment.htm">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Quản lí bình luận</span>
             </a>	

@@ -182,10 +182,6 @@
                                             <td><f:input path="date"/></td>
                                         </tr>
                                         <tr>
-                                            <td>imageId</td>
-                                            <td><f:input path="imageId"/></td>
-                                        </tr>
-                                        <tr>
                                             <td>quantity</td>
                                             <td><f:input path="quantity"/></td>
                                         </tr>

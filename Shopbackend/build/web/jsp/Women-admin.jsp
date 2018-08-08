@@ -239,7 +239,6 @@
                                                 <th>Ten_san_pham</th>
                                                 <th>Image</th>
                                                 <th>Input Date</th>
-                                                <th>Image-Id</th>
                                                 <th>Quantity</th>
                                                 <th>Description</th>
                                                 <th>Price</th>
@@ -258,7 +257,6 @@
                                                     <td>${W.productName}</td>
                                                     <td>${W.productImage}</td>
                                                     <td>${W.date}</td>
-                                                    <td>${W.imageId}</td>
                                                     <td>${W.quantity}</td>
                                                     <td>${W.description}</td>
                                                     <td>${W.price}</td>

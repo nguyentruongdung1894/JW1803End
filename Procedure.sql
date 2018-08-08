@@ -414,7 +414,20 @@ END
 CREATE PROC getComment
 AS
 BEGIN
-	SELECT bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	SELECT bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
 	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
 	WHERE bl.Trang_thai=1 AND sp.Trang_Thai=1
+END
+
+--Test: Exec UpdateComment 6,1,1
+CREATE PROC UpdateComment
+@idcustomer INT,
+@idproduct INT,
+@trangthai INT
+AS
+BEGIN
+	UPDATE dbo.Binh_luan
+	SET 
+		Trang_thai =@trangthai	
+	WHERE Ma_khach_hang=@idcustomer AND Ma_san_pham=@idproduct
 END

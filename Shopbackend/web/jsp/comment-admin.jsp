@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Product - admin</title>
+        <title>Comment</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -199,92 +199,49 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
-
-
-                                <f:form class="example" action="search.htm" method="POST" modelAttribute="usersearch">                               
-                                    <f:input path="str" type="text" placeholder="Search.." name="search"/>
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </f:form>
-                                
-                                <div class="">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Lọc Sản Phẩm
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <c:forEach items="${listBannerMen}" var="M">
-                                                <li><a href="<%=request.getContextPath()%>/admin/mens-filter.htm?productMenById=${M.madanhmuccon}">${M.tendanhmuccon}</a></li>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Click Me...!
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="productMen-admin.htm">Men's wear</a></li>
-                                            <li><a href="productWomen-admin.htm">Women's wear</a></li>
-                                            <li><a href="productBag-admin.htm">Bag</a></li>
-                                            <li><a href="productFootwear-admin.htm">Footwear</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
+                                <f:form action="update.htm" modelAttribute="proUpdate" method="POST">
                                 <div class="">          
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
-                                                <th>Id</th>
-                                                <th>References</th>
-                                                <th>Ten_san_pham</th>
-                                                <th>Image</th>
-                                                <th>Input Date</th>
-                                                <th>Quantity</th>
-                                                <th>Description</th>
-                                                <th>Price</th>
-                                                <th>Sale-Id</th>
-                                                <th>View</th>
-                                                <th>Supplier</th>
-                                                <th>Status</th>
+                                                <th>idCustomer</th>
+                                                <th>idProduct</th>
+                                                <th>nameProduct</th>
+                                                <th>nameCustomer</th>
+                                                <th>content</th>
+                                                <th>dateComment</th>
+                                                <th>status</th>                                               
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="id01">
-                                            <c:forEach items="${listMadmin}" var="M">
+                                            <c:forEach items="${listcomment}" var="list">
                                                 <tr>
-                                                    <td>${M.productId}</td>
-                                                    <td>${M.categoryId}</td>
-                                                    <td>${M.productName}</td>
-                                                    <td>${M.productImage}</td>
-                                                    <td>${M.date}</td>
-                                                    <td>${M.quantity}</td>
-                                                    <td>${M.description}</td>
-                                                    <td>${M.price}</td>
-                                                    <td>${M.saleId}</td>
-                                                    <td>${M.view}</td>
-                                                    <td>${M.supplier}</td>                                                    
-                                                    <td>${M.status}</td>
+                                                    <td>${list.idCustomer}</td>
+                                                    <td>${list.idProduct}</td>
+                                                    <td>${list.nameProduct}</td>
+                                                    <td>${list.nameCustomer}</td>
+                                                    <td>${list.content}</td>
+                                                    <td>${list.dateComment}</td>
+                                                    <td>${list.status}</td>                                                                                                     
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="#">
+                                                            <a class="blue" href="">
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
 
-                                                            <a class="green" href="iUpdate.htm?productId=${M.productId}">
+                                                            <a class="green" href="">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="delete-product.htm?productId=${M.productId}">
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
+                                                            </a>                                                            
                                                         </div>
                                                     </td>
                                                 </tr> 
                                             </c:forEach>
                                         </tbody>
                                     </table>
-                                </div>  
-                                <a href="iInsert.htm">Create New Product</a>
+                                </div>      
+                                </f:form>
+                                
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

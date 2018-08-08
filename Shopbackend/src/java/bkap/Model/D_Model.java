@@ -7,6 +7,7 @@ package bkap.Model;
 
 import bkap.Connection.D_Connection;
 import bkap.Connection.Pagination;
+import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
@@ -99,7 +100,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -132,7 +132,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -165,7 +164,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -198,7 +196,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -290,7 +287,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -323,7 +319,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -357,7 +352,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -381,19 +375,18 @@ public class D_Model {
         CallableStatement call = null;
         try {
             conn = D_Connection.openDataBase();
-            call = conn.prepareCall("{call InsertProdcut(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            call = conn.prepareCall("{call InsertProdcut(?,?,?,?,?,?,?,?,?,?,?)}");
             call.setInt(1, proAdmin.getCategoryId());
             call.setString(2, proAdmin.getProductName());
             call.setString(3, proAdmin.getProductImage());
-            call.setDate(4, proAdmin.getDate());
-            call.setInt(5, proAdmin.getImageId());        
-            call.setInt(6, proAdmin.getQuantity());
-            call.setString(7, proAdmin.getDescription());         
-            call.setFloat(8, proAdmin.getPrice());       
-            call.setInt(9, proAdmin.getSaleId());
-            call.setInt(10, proAdmin.getView());
-            call.setInt(11, proAdmin.getSupplier());
-            call.setBoolean(12, proAdmin.isStatus());          
+            call.setDate(4, proAdmin.getDate());     
+            call.setInt(5, proAdmin.getQuantity());
+            call.setString(6, proAdmin.getDescription());         
+            call.setFloat(7, proAdmin.getPrice());       
+            call.setInt(8, proAdmin.getSaleId());
+            call.setInt(9, proAdmin.getView());
+            call.setInt(10, proAdmin.getSupplier());
+            call.setBoolean(11, proAdmin.isStatus());          
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -409,20 +402,19 @@ public class D_Model {
         CallableStatement call = null;
         try {
             conn = D_Connection.openDataBase();
-            call = conn.prepareCall("{call UpdateProduct(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            call = conn.prepareCall("{call UpdateProduct(?,?,?,?,?,?,?,?,?,?,?,?)}");
             call.setInt(1, pro.getProductId());
             call.setInt(2, pro.getCategoryId());
             call.setString(3, pro.getProductName());
             call.setString(4, pro.getProductImage());
             call.setDate(5, pro.getDate());
-            call.setInt(6, pro.getImageId());        
-            call.setInt(7, pro.getQuantity());
-            call.setString(8, pro.getDescription());         
-            call.setFloat(9, pro.getPrice());       
-            call.setInt(10, pro.getSaleId());
-            call.setInt(11, pro.getView());
-            call.setInt(12, pro.getSupplier());
-            call.setBoolean(13, pro.isStatus());   
+            call.setInt(6, pro.getQuantity());
+            call.setString(7, pro.getDescription());         
+            call.setFloat(8, pro.getPrice());       
+            call.setInt(9, pro.getSaleId());
+            call.setInt(10, pro.getView());
+            call.setInt(11, pro.getSupplier());
+            call.setBoolean(12, pro.isStatus());   
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -609,7 +601,6 @@ public class D_Model {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -655,5 +646,51 @@ public class D_Model {
             D_Connection.closeDataBase(conn, call);
         }
         return searchUser;
+    }
+    
+    public List<Comment> getcomment(){
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Comment> listcomment = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call getComment()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Comment a = new Comment();
+                a.setIdCustomer(rs.getInt("Ma_khach_hang"));   
+                a.setIdProduct(rs.getInt("Ma_san_pham"));                      
+                a.setNameProduct(rs.getString("Ten_san_pham"));
+                a.setNameCustomer(rs.getString("Ten_khach_hang"));       
+                a.setContent(rs.getString("content"));
+                a.setDateComment(rs.getDate("Ngay_binh_luan"));
+                a.setStatus(rs.getBoolean("Trang_thai"));
+                listcomment.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return listcomment;
+    }
+    
+    public boolean UpdateComment(Comment cmt) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateComment(?,?,?)}");
+            call.setInt(1, cmt.getIdCustomer());
+            call.setInt(2, cmt.getIdProduct());
+            call.setBoolean(3, cmt.getStatus());          
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
     }
 }

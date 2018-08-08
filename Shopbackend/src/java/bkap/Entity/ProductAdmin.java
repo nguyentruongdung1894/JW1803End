@@ -16,7 +16,6 @@ public class ProductAdmin {
     private int categoryId;
     private String productName;
     private String productImage;
-    private int imageId;
     private int quantity;
     private String description;
     private float price;
@@ -29,12 +28,11 @@ public class ProductAdmin {
     public ProductAdmin() {
     }
 
-    public ProductAdmin(int productId, int categoryId, String productName, String productImage, int imageId, int quantity, String description, float price, int saleId, int view, int supplier, Date date, boolean status) {
+    public ProductAdmin(int productId, int categoryId, String productName, String productImage, int quantity, String description, float price, int saleId, int view, int supplier, Date date, boolean status) {
         this.productId = productId;
         this.categoryId = categoryId;
         this.productName = productName;
         this.productImage = productImage;
-        this.imageId = imageId;
         this.quantity = quantity;
         this.description = description;
         this.price = price;
@@ -75,14 +73,6 @@ public class ProductAdmin {
 
     public void setProductImage(String productImage) {
         this.productImage = productImage;
-    }
-
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 
     public int getQuantity() {

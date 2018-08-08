@@ -6,6 +6,7 @@
 package bkap.Controller;
 
 import bkap.Connection.D_Connection;
+import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
@@ -137,7 +138,6 @@ public class D_Controller {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -179,7 +179,6 @@ public class D_Controller {
                 pro.setProductName(rs.getString("Ten_san_pham"));
                 pro.setProductImage(rs.getString("Hinh_anh"));
                 pro.setDate(rs.getDate("Ngay_Nhap"));
-                pro.setImageId(rs.getInt("Ma_hinh_anh"));
                 pro.setQuantity(rs.getInt("So_luong"));
                 pro.setDescription(rs.getString("Mo_ta"));
                 pro.setPrice(rs.getFloat("Don_gia"));
@@ -357,5 +356,24 @@ public class D_Controller {
         model.getModelMap().addAttribute("searchuser", searchuser);
         model.addObject("search", search);
         return model;
+    }
+    
+    @RequestMapping(value = "/getcomment")
+    public ModelAndView getcomment(){
+        ModelAndView model=new ModelAndView("comment-admin");    
+        List<Comment> listcomment=d_model.getcomment();
+        model.addObject("listcomment", listcomment);
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-Comment")
+    public String updateComment(Comment cmt){
+        boolean check=d_model.UpdateComment(cmt);
+        if(check){          
+            return "redirect:getcomment.htm";
+        }
+        else{
+            return "error";
+        }
     }
 }
