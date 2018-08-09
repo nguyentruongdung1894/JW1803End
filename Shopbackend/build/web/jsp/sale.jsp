@@ -200,41 +200,41 @@
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
                                 <f:form action="update.htm" modelAttribute="proUpdate" method="POST">
-                                <div class="">          
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="">
-                                                <th>saleid</th>
-                                                <th>dateInput</th>
-                                                <th>dateOutput</th>
-                                                <th>levelSale</th>                                                                                           
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="id01">
-                                            <c:forEach items="${sale}" var="sale">
-                                                <tr>
-                                                    <td>${sale.saleid}</td>
-                                                    <td>${sale.dateInput}</td>
-                                                    <td>${sale.dateOutput}</td>
-                                                    <td>${sale.levelSale}</td>                                                                                                                                                      
-                                                    <td>
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            
-                                                                <a class="green" href="">
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
+                                    <div class="">          
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="">
+                                                    <th>saleid</th>
+                                                    <th>dateInput</th>
+                                                    <th>dateOutput</th>
+                                                    <th>levelSale</th>                                                                                           
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="id01">
+                                                <c:forEach items="${sale}" var="sale">
+                                                    <tr>
+                                                        <td>${sale.saleid}</td>
+                                                        <td>${sale.dateInput}</td>
+                                                        <td>${sale.dateOutput}</td>
+                                                        <td>${sale.levelSale}</td>                                                                                                                                                      
+                                                        <td>
+                                                            <div class="hidden-sm hidden-xs action-buttons">
 
-                                                            <a class="red" href="">
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>                                                           
-                                                        </div>
-                                                    </td>
-                                                </tr> 
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>      
+                                                                <a class="green" href="">
+                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                                </a>
+
+                                                                <a class="red" href="">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                                </a>                                                           
+                                                            </div>
+                                                        </td>
+                                                    </tr> 
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>      
                                 </f:form>
                                 <a href="">Create New Sale</a>
 <!--                                <a href="">${url}</a>-->

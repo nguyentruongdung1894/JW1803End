@@ -439,6 +439,51 @@ BEGIN
 	SELECT * FROM dbo.Khuyenmai
 END
 
+
+--Test: Exec getSaleById 2
+CREATE PROC getSaleById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Khuyenmai kh WHERE kh.Ma_Giam_Gia=@Id 
+END
+
+CREATE procedure DeleteSale
+@Id int
+AS
+BEGIN
+	DELETE dbo.Khuyenmai
+	WHERE Ma_Giam_Gia=@Id
+END
+
+--Tạo user moi
+CREATE procedure InsertSale
+@dateinput date,
+@dateoutput date,
+@levelsale int
+as
+BEGIN
+	insert into dbo.Khuyenmai
+	values(@dateinput,@dateoutput, @levelsale);
+END
+
+--Sửa user
+CREATE PROC UpdateSale
+@id int,
+@dateinput date,
+@dateoutput date,
+@levelsale int
+AS
+BEGIN
+	UPDATE dbo.Khuyenmai
+	SET 
+		Ngay_bat_dau =@dateinput,
+		Ngay_ket_thuc=@dateoutput,
+		Muc_do_giam_gia =@levelsale
+	WHERE Ma_Giam_Gia=@id
+END
+
+
 --Test: Exec search men
 CREATE PROC search
 @string nvarchar(50)
