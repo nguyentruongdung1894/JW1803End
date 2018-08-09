@@ -366,14 +366,88 @@ public class D_Controller {
         return model;
     }
     
-    @RequestMapping(value = "/update-Comment")
-    public String updateComment(Comment cmt){
-        boolean check=d_model.UpdateComment(cmt);
+    @RequestMapping(value = "/iUpdate-Cmt")
+    public ModelAndView iCmt(int id){
+        ModelAndView model=new ModelAndView("updateCmt");       
+        Comment cmt=d_model.getCmtById(id);      
+        model.getModelMap().addAttribute("cmt", cmt);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-Cmt")
+    public String updateCmt(Comment cmt){
+        boolean check=d_model.UpdatCmt(cmt);
         if(check){          
-            return "redirect:getcomment.htm";
+            return "redirect:iUpdate-Cmt.htm";
         }
         else{
             return "error";
         }
+    }
+    
+    @RequestMapping(value = "/getSupplier")
+    public ModelAndView getSupplier(){
+        ModelAndView model=new ModelAndView("supplier");
+        List<Supplier> supplier=d_model.getSupplier();
+        model.addObject("supplier", supplier);
+        return model;
+    }
+    
+    @RequestMapping(value = "/delete-supplier")
+    public String deleteSupplier(int idSupplier){
+        boolean check=d_model.deleteSupplier(idSupplier);
+        if(check){          
+            return "redirect:getSupplier.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-supplier")
+    public ModelAndView iUpdatesupplier(int idSupplier){
+        ModelAndView model=new ModelAndView("updatesupplier-admin");       
+        Supplier supplier=d_model.getSupplierById(idSupplier);
+        
+        model.getModelMap().addAttribute("supplier", supplier);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-supplier")
+    public String updatesupplier(Supplier sup){
+        boolean check=d_model.UpdateSupplier(sup);
+        if(check){          
+            return "redirect:getSupplier.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+   
+    @RequestMapping(value = "/iInsert-supplier")
+    public ModelAndView iIsertsupplier(){
+        ModelAndView model=new ModelAndView("insertsupplier-admin");
+        Supplier supplier=new Supplier();       
+        model.getModelMap().addAttribute("supplier", supplier);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-supplier", method = RequestMethod.POST)
+    public String Isertsupplier(Supplier sup){
+        boolean check=d_model.insertSupplier(sup);
+        if(check){          
+            return "redirect:getSupplier.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/getSale")
+    public ModelAndView getSale(){
+        ModelAndView model=new ModelAndView("sale");
+        List<Sale> sale=d_model.getSale();
+        model.addObject("sale", sale);
+        return model;
     }
 }

@@ -382,6 +382,56 @@ BEGIN
 	SELECT * FROM dbo.Nha_cung_cap 
 END
 
+
+--Test: Exec getSupplierById 2
+CREATE PROC getSupplierById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Nha_cung_cap kh WHERE kh.Ma_nha_cung_cap=@Id 
+END
+
+CREATE procedure DeleteSupplier
+@Id int
+AS
+BEGIN
+	DELETE dbo.Nha_cung_cap
+	WHERE Ma_nha_cung_cap=@Id
+END
+
+--Tạo user moi
+CREATE procedure InsertSupplier
+@namesupplier NVARCHAR(50),
+@address NVARCHAR(50),
+@phone int,
+@fax VARCHAR(20)
+as
+BEGIN
+	insert into dbo.Nha_cung_cap
+	values(@namesupplier,@address, @phone, @fax);
+END
+
+--Sửa user
+CREATE PROC UpdateSupplier
+@id int,
+@namesupplier NVARCHAR(50),
+@address NVARCHAR(50),
+@phone int,
+@fax VARCHAR(20)
+AS
+BEGIN
+	UPDATE dbo.Nha_cung_cap
+	SET 
+		Ten_nha_cung_cap =@namesupplier,
+		Dia_chi=@address,
+		So_dien_thoai =@phone,
+		So_fax=@fax	
+	WHERE Ma_nha_cung_cap=@id
+END
+
+
+
+
 --Lây Mã Giảm Giá
 CREATE PROC getSale
 as
@@ -409,23 +459,33 @@ BEGIN
 END
 
 
-CREATE PROC getComment
+ALTER PROC getComment
 AS
 BEGIN
-	SELECT bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	SELECT bl.Ma_binh_luan,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
 	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
 	WHERE bl.Trang_thai=1 AND sp.Trang_Thai=1
 END
 
---Test: Exec UpdateComment 6,1,1
+--Test: Exec getCommentById 1
+CREATE PROC getCommentById
+@Id int	
+AS
+BEGIN
+	SELECT bl.Ma_binh_luan,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
+	WHERE bl.Ma_binh_luan=@Id AND bl.Trang_thai=1 AND sp.Trang_Thai=1
+END
+
+
+
+--Test: Exec UpdateComment 1,1
 CREATE PROC UpdateComment
-@idcustomer INT,
-@idproduct INT,
-@trangthai INT
+@id int,
+@status INT
 AS
 BEGIN
 	UPDATE dbo.Binh_luan
-	SET 
-		Trang_thai =@trangthai	
-	WHERE Ma_khach_hang=@idcustomer AND Ma_san_pham=@idproduct
+	SET Trang_thai=@status 	
+	WHERE Ma_binh_luan=@id
 END

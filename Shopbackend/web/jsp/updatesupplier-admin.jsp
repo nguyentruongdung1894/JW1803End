@@ -1,18 +1,20 @@
 <%-- 
-    Document   : AccountAdmin
-    Created on : Jul 18, 2018, 11:14:45 AM
+    Document   : insertProduct
+    Created on : Jul 3, 2018, 2:44:45 PM
     Author     : ScorPius 31
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Comment</title>
+        <title>Insert - Supplier</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -31,48 +33,7 @@
 
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-        <style>
-            form.example input[type=text] {
-                padding: 5px;
-                font-size: 15px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                float: left;
-                width: 10%;
-                background: #f1f1f1;
-                margin-bottom: 10px;
-                -webkit-transition: width 0.4s ease-in-out;
-                transition: width 0.4s ease-in-out;
-            }
-            form.example input[type=text]:focus {
-                width: 50%;
-            }
-            form.example button {
-                float: left;
-                width: 40px;
-                padding: 5px;
-                background: #2196F3;
-                color: white;
-                font-size: 15px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-left: none;
-                cursor: pointer;
-                margin-bottom: 10px;
-            }
-
-            form.example button:hover {
-                background: #0b7dda;
-            }
-
-            form.example::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-        </style>
     </head>
-
     <body class="no-skin">
         <jsp:include flush="true" page="navbar-admin.jsp"/>
 
@@ -198,59 +159,43 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                <f:form action="update.htm" modelAttribute="proUpdate" method="POST">
-                                <div class="">          
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="">
-                                                <th>id</th>
-                                                <th>idCustomer</th>
-                                                <th>idProduct</th>
-                                                <th>nameProduct</th>
-                                                <th>nameCustomer</th>
-                                                <th>content</th>
-                                                <th>dateComment</th>
-                                                <th>status</th>                                               
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="id01">
-                                            <c:forEach items="${listcomment}" var="list">
-                                                <tr>
-                                                    <td>${list.id}</td>
-                                                    <td>${list.idCustomer}</td>
-                                                    <td>${list.idProduct}</td>
-                                                    <td>${list.nameProduct}</td>
-                                                    <td>${list.nameCustomer}</td>
-                                                    <td>${list.content}</td>
-                                                    <td>${list.dateComment}</td>
-                                                    <td>${list.status}</td>                                                                                                     
-                                                    <td>
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="">
-                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="green" href="iUpdate-Cmt.htm?id=${list.id}">
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>                                                            
-                                                        </div>
-                                                    </td>
-                                                </tr> 
-                                            </c:forEach>
-                                        </tbody>
+                                <f:form action="update-supplier.htm" modelAttribute="supplier" method="POST">
+                                    <table>
+                                        <tr>
+                                            <td>supplierId</td>
+                                            <td><f:input path="supplierId"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>supplierName</td>
+                                            <td><f:input path="supplierName"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>address</td>
+                                            <td><f:input path="address"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>phone</td>
+                                            <td><f:input path="phone"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>fax</td>
+                                            <td><f:input path="fax"/></td>
+                                        </tr>                                        
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                <input type="submit" value="Update"/>
+                                                <input type="reset" value="Reset"/>
+                                                <input type="button" value="Back" onclick="history.go(-1)"/>
+                                            </td>
+                                        </tr>
                                     </table>
-                                </div>      
                                 </f:form>
-                                
-<!--                                <a href="">${url}</a>-->
-                                <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.page-content -->
                 </div>
             </div><!-- /.main-content -->
+
 
             <jsp:include flush="true" page="footer-admin.jsp"/>
 
@@ -262,7 +207,7 @@
         <script src="../jsp/assets/js/jquery.2.1.1.min.js"></script>
 
         <script type="text/javascript">
-                            window.jQuery || document.write("<script src='../jsp/assets/js/jquery.min.js'>" + "<" + "/script>");
+                                                    window.jQuery || document.write("<script src='../jsp/assets/js/jquery.min.js'>" + "<" + "/script>");
         </script>
 
         <script type="text/javascript">
@@ -279,7 +224,5 @@
         <!-- ace scripts -->
         <script src="../jsp/assets/js/ace-elements.min.js"></script>
         <script src="../jsp/assets/js/ace.min.js"></script>
-
-
     </body>
 </html>

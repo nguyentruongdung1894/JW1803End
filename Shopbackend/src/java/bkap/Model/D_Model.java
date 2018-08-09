@@ -561,6 +561,88 @@ public class D_Model {
         return Supplier;
     }
     
+    public Supplier getSupplierById(int idSupplier){
+        Connection conn=null;
+        CallableStatement call=null;
+        Supplier supplier=new Supplier();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getSupplierById(?)}");
+            call.setInt(1, idSupplier);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                supplier.setSupplierId(rs.getInt("Ma_nha_cung_cap"));
+                supplier.setSupplierName(rs.getString("Ten_nha_cung_cap"));
+                supplier.setAddress(rs.getString("Dia_chi"));
+                supplier.setPhone(rs.getInt("So_dien_thoai"));
+                supplier.setFax(rs.getString("So_fax"));               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return supplier;
+    }
+    
+    public boolean insertSupplier(Supplier supplier) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertSupplier(?,?,?,?)}");
+            call.setString(1, supplier.getSupplierName());
+            call.setString(2, supplier.getAddress());
+            call.setInt(3, supplier.getPhone());
+            call.setString(4, supplier.getFax());                    
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateSupplier(Supplier supplier) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateSupplier(?,?,?,?,?)}");
+            call.setInt(1, supplier.getSupplierId());
+            call.setString(2, supplier.getSupplierName());
+            call.setString(3, supplier.getAddress());
+            call.setInt(4, supplier.getPhone());
+            call.setString(5, supplier.getFax());           
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean deleteSupplier(int idSupplier) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteSupplier(?)}");
+            call.setInt(1, idSupplier);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
     public List<Sale> getSale() {
         Connection conn = null;
         CallableStatement call = null;
@@ -658,6 +740,7 @@ public class D_Model {
             ResultSet rs = call.executeQuery();
             while (rs.next()) {
                 Comment a = new Comment();
+                a.setId(rs.getInt("Ma_binh_luan"));   
                 a.setIdCustomer(rs.getInt("Ma_khach_hang"));   
                 a.setIdProduct(rs.getInt("Ma_san_pham"));                      
                 a.setNameProduct(rs.getString("Ten_san_pham"));
@@ -675,15 +758,41 @@ public class D_Model {
         return listcomment;
     }
     
-    public boolean UpdateComment(Comment cmt) {
+    public Comment getCmtById(int id){
+        Connection conn=null;
+        CallableStatement call=null;
+        Comment cmt=new Comment();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getCommentById(?)}");
+            call.setInt(1, id);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                cmt.setId(rs.getInt("Ma_binh_luan"));   
+                cmt.setIdCustomer(rs.getInt("Ma_khach_hang"));   
+                cmt.setIdProduct(rs.getInt("Ma_san_pham"));                      
+                cmt.setNameProduct(rs.getString("Ten_san_pham"));
+                cmt.setNameCustomer(rs.getString("Ten_khach_hang"));       
+                cmt.setContent(rs.getString("content"));
+                cmt.setDateComment(rs.getDate("Ngay_binh_luan"));
+                cmt.setStatus(rs.getBoolean("Trang_thai"));                          
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return cmt;
+    }
+    
+    public boolean UpdatCmt(Comment cmt) {
         Connection conn = null;
         CallableStatement call = null;
         try {
             conn = D_Connection.openDataBase();
-            call = conn.prepareCall("{call UpdateComment(?,?,?)}");
-            call.setInt(1, cmt.getIdCustomer());
-            call.setInt(2, cmt.getIdProduct());
-            call.setBoolean(3, cmt.getStatus());          
+            call = conn.prepareCall("{call UpdateComment(?,?)}");
+            call.setInt(1, cmt.getId());
+            call.setBoolean(2, cmt.getStatus());           
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

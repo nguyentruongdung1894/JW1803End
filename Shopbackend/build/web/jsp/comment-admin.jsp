@@ -204,6 +204,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
+                                                <th>id</th>
                                                 <th>idCustomer</th>
                                                 <th>idProduct</th>
                                                 <th>nameProduct</th>
@@ -217,6 +218,7 @@
                                         <tbody id="id01">
                                             <c:forEach items="${listcomment}" var="list">
                                                 <tr>
+                                                    <td>${list.id}</td>
                                                     <td>${list.idCustomer}</td>
                                                     <td>${list.idProduct}</td>
                                                     <td>${list.nameProduct}</td>
@@ -230,7 +232,7 @@
                                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                                             </a>
 
-                                                            <a class="green" href="">
+                                                            <a class="green" href="iUpdate-Cmt.htm?id=${list.id}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>                                                            
                                                         </div>

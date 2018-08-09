@@ -13,6 +13,7 @@ import java.sql.Date;
  * @author ScorPius 31
  */
 public class Comment {
+    private int id;
     private int idCustomer;
     private int idProduct;
     private String nameProduct;
@@ -24,7 +25,8 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(int idCustomer, int idProduct, String nameProduct, String nameCustomer, String content, Date dateComment, boolean status) {
+    public Comment(int id, int idCustomer, int idProduct, String nameProduct, String nameCustomer, String content, Date dateComment, boolean status) {
+        this.id = id;
         this.idCustomer = idCustomer;
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
@@ -32,6 +34,14 @@ public class Comment {
         this.content = content;
         this.dateComment = dateComment;
         this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdCustomer() {

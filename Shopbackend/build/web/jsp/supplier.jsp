@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Comment</title>
+        <title>Supplier</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -200,50 +200,44 @@
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
                                 <f:form action="update.htm" modelAttribute="proUpdate" method="POST">
-                                <div class="">          
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="">
-                                                <th>id</th>
-                                                <th>idCustomer</th>
-                                                <th>idProduct</th>
-                                                <th>nameProduct</th>
-                                                <th>nameCustomer</th>
-                                                <th>content</th>
-                                                <th>dateComment</th>
-                                                <th>status</th>                                               
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="id01">
-                                            <c:forEach items="${listcomment}" var="list">
-                                                <tr>
-                                                    <td>${list.id}</td>
-                                                    <td>${list.idCustomer}</td>
-                                                    <td>${list.idProduct}</td>
-                                                    <td>${list.nameProduct}</td>
-                                                    <td>${list.nameCustomer}</td>
-                                                    <td>${list.content}</td>
-                                                    <td>${list.dateComment}</td>
-                                                    <td>${list.status}</td>                                                                                                     
-                                                    <td>
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="">
-                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
+                                    <div class="">          
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="">
+                                                    <th>supplierId</th>
+                                                    <th>supplierName</th>
+                                                    <th>address</th>
+                                                    <th>phone</th>
+                                                    <th>fax</th>                                                                                            
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="id01">
+                                                <c:forEach items="${supplier}" var="supplier">
+                                                    <tr>
+                                                        <td>${supplier.supplierId}</td>
+                                                        <td>${supplier.supplierName}</td>
+                                                        <td>${supplier.address}</td>
+                                                        <td>${supplier.phone}</td>
+                                                        <td>${supplier.fax}</td>                                                                                                                                                       
+                                                        <td>
+                                                            <div class="hidden-sm hidden-xs action-buttons">
+                                                                <a class="green" href="iUpdate-supplier.htm?idSupplier=${supplier.supplierId}">
+                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                                </a>
 
-                                                            <a class="green" href="iUpdate-Cmt.htm?id=${list.id}">
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>                                                            
-                                                        </div>
-                                                    </td>
-                                                </tr> 
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>      
+                                                                <a class="red" href="delete-supplier.htm?idSupplier=${supplier.supplierId}">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                                </a>                                                          
+                                                            </div>
+                                                        </td>
+                                                    </tr> 
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>      
                                 </f:form>
-                                
+                                <a href="iInsert-supplier.htm">Create New Supplier</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

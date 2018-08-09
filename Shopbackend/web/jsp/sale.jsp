@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Comment</title>
+        <title>Sale</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -204,37 +204,30 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
-                                                <th>id</th>
-                                                <th>idCustomer</th>
-                                                <th>idProduct</th>
-                                                <th>nameProduct</th>
-                                                <th>nameCustomer</th>
-                                                <th>content</th>
-                                                <th>dateComment</th>
-                                                <th>status</th>                                               
+                                                <th>saleid</th>
+                                                <th>dateInput</th>
+                                                <th>dateOutput</th>
+                                                <th>levelSale</th>                                                                                           
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="id01">
-                                            <c:forEach items="${listcomment}" var="list">
+                                            <c:forEach items="${sale}" var="sale">
                                                 <tr>
-                                                    <td>${list.id}</td>
-                                                    <td>${list.idCustomer}</td>
-                                                    <td>${list.idProduct}</td>
-                                                    <td>${list.nameProduct}</td>
-                                                    <td>${list.nameCustomer}</td>
-                                                    <td>${list.content}</td>
-                                                    <td>${list.dateComment}</td>
-                                                    <td>${list.status}</td>                                                                                                     
+                                                    <td>${sale.saleid}</td>
+                                                    <td>${sale.dateInput}</td>
+                                                    <td>${sale.dateOutput}</td>
+                                                    <td>${sale.levelSale}</td>                                                                                                                                                      
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="">
-                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                            
+                                                                <a class="green" href="">
+                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
-                                                            <a class="green" href="iUpdate-Cmt.htm?id=${list.id}">
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>                                                            
+                                                            <a class="red" href="">
+                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                            </a>                                                           
                                                         </div>
                                                     </td>
                                                 </tr> 
@@ -243,7 +236,7 @@
                                     </table>
                                 </div>      
                                 </f:form>
-                                
+                                <a href="">Create New Sale</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
