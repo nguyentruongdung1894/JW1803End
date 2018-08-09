@@ -220,14 +220,13 @@
                                                         <td>${sale.levelSale}</td>                                                                                                                                                      
                                                         <td>
                                                             <div class="hidden-sm hidden-xs action-buttons">
-
-                                                                <a class="green" href="">
+                                                                <a class="green" href="iUpdate-sale.htm?idSale=${sale.saleid}">
                                                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                                 </a>
 
-                                                                <a class="red" href="">
+                                                                <a class="red" href="delete-sale.htm?idSale=${sale.saleid}">
                                                                     <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                </a>                                                           
+                                                                </a>                                                          
                                                             </div>
                                                         </td>
                                                     </tr> 
@@ -236,7 +235,7 @@
                                         </table>
                                     </div>      
                                 </f:form>
-                                <a href="">Create New Sale</a>
+                                <a href="iInsert-sale.htm">Create New Sale</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

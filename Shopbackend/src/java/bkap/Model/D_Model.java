@@ -668,84 +668,84 @@ public class D_Model {
     }
     
     
-//    public Sale getSaleById(int idSale){
-//        Connection conn=null;
-//        CallableStatement call=null;
-//        Sale sale=new Sale();
-//        try {
-//            conn=D_Connection.openDataBase();
-//            call=conn.prepareCall("{call getSupplierById(?)}");
-//            call.setInt(1, idSale);
-//            ResultSet rs=call.executeQuery();
-//            if(rs.next()){
-//                sale.setSaleid(rs.getInt("Ma_Giam_Gia"));
-//                sale.setDateInput(rs.getDate("Ngay_bat_dau"));
-//                sale.setDateOutput(rs.getDate("Ngay_ket_thuc"));
-//                sale.setLevelSale(rs.getInt("Muc_do_giam_gia"));              
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally{
-//            D_Connection.closeDataBase(conn, call);
-//        }
-//        return sale;
-//    }
-//    
-//    public boolean insertSale(Sale sale) {
-//        Connection conn = null;
-//        CallableStatement call = null;
-//        try {
-//            conn = D_Connection.openDataBase();
-//            call = conn.prepareCall("{call InsertSale(?,?,?)}");
-//            call.setDate(1, sale.getDateInput());
-//            call.setDate(2, sale.getDateOutput());
-//            call.setInt(3, sale.getLevelSale());                
-//            call.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            D_Connection.closeDataBase(conn, call);
-//        }
-//        return true;
-//    }
-//    
-//    public boolean UpdateSale(Sale sale) {
-//        Connection conn = null;
-//        CallableStatement call = null;
-//        try {
-//            conn = D_Connection.openDataBase();
-//            call = conn.prepareCall("{call UpdateSale(?,?,?,?)}");
-//            call.setInt(1, sale.getSaleid());
-//            call.setDate(2, sale.getDateInput());
-//            call.setDate(3, sale.getDateOutput());
-//            call.setInt(4, sale.getLevelSale());       
-//            call.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            D_Connection.closeDataBase(conn, call);
-//        }
-//        return true;
-//    }
-//    
-//    public boolean deleteSale(int idSale) {
-//        Connection conn = null;
-//        CallableStatement call = null;
-//        try {
-//            conn = D_Connection.openDataBase();
-//            call = conn.prepareCall("{call DeleteSale(?)}");
-//            call.setInt(1, idSale);
-//            call.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            D_Connection.closeDataBase(conn, call);
-//        }
-//        return true;
-//    }
+    public Sale getSaleById(int idSale){
+        Connection conn=null;
+        CallableStatement call=null;
+        Sale sale=new Sale();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getSaleById(?)}");
+            call.setInt(1, idSale);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                sale.setSaleid(rs.getInt("Ma_Giam_Gia"));
+                sale.setDateInput(rs.getDate("Ngay_bat_dau"));
+                sale.setDateOutput(rs.getDate("Ngay_ket_thuc"));
+                sale.setLevelSale(rs.getInt("Muc_do_giam_gia"));              
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return sale;
+    }
+    
+    public boolean insertSale(Sale sale) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertSale(?,?,?)}");
+            call.setDate(1, sale.getDateInput());
+            call.setDate(2, sale.getDateOutput());
+            call.setInt(3, sale.getLevelSale());                
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateSale(Sale sale) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateSale(?,?,?,?)}");
+            call.setInt(1, sale.getSaleid());
+            call.setDate(2, sale.getDateInput());
+            call.setDate(3, sale.getDateOutput());
+            call.setInt(4, sale.getLevelSale());       
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean deleteSale(int idSale) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteSale(?)}");
+            call.setInt(1, idSale);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
     
     public List<ProductAdmin> search(Search str) {
         Connection conn = null;

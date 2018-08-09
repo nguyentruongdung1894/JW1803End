@@ -451,53 +451,52 @@ public class D_Controller {
         return model;
     }
     
-//    @RequestMapping(value = "/delete-supplier")
-//    public String deleteSale(int idSale){
-//        boolean check=d_model.deleteSale(idSale);
-//        if(check){          
-//            return "redirect:getSale.htm";
-//        }
-//        else{
-//            return "error";
-//        }
-//    }
+    @RequestMapping(value = "/delete-sale")
+    public String deleteSale(int idSale){
+        boolean check=d_model.deleteSale(idSale);
+        if(check){          
+            return "redirect:getSale.htm";
+        }
+        else{
+            return "error";
+        }
+    }
     
-//    @RequestMapping(value = "/iUpdate-supplier")
-//    public ModelAndView iUpdatesupplier(int idSupplier){
-//        ModelAndView model=new ModelAndView("updatesupplier-admin");       
-//        Supplier supplier=d_model.getSupplierById(idSupplier);
-//        
-//        model.getModelMap().addAttribute("supplier", supplier);      
-//        return model;
-//    }
-//    
-//    @RequestMapping(value = "/update-supplier")
-//    public String updatesupplier(Supplier sup){
-//        boolean check=d_model.UpdateSupplier(sup);
-//        if(check){          
-//            return "redirect:getSupplier.htm";
-//        }
-//        else{
-//            return "error";
-//        }
-//    }
-//   
-//    @RequestMapping(value = "/iInsert-supplier")
-//    public ModelAndView iIsertsupplier(){
-//        ModelAndView model=new ModelAndView("insertsupplier-admin");
-//        Supplier supplier=new Supplier();       
-//        model.getModelMap().addAttribute("supplier", supplier);
-//        return model;
-//    }
-//    
-//    @RequestMapping(value = "/insert-supplier", method = RequestMethod.POST)
-//    public String Isertsupplier(Supplier sup){
-//        boolean check=d_model.insertSupplier(sup);
-//        if(check){          
-//            return "redirect:getSupplier.htm";
-//        }
-//        else{
-//            return "error";
-//        }
-//    }
+    @RequestMapping(value = "/iUpdate-sale")
+    public ModelAndView iUpdatesale(int idSale){
+        ModelAndView model=new ModelAndView("updatesale-admin");       
+        Sale sale=d_model.getSaleById(idSale);      
+        model.getModelMap().addAttribute("sale", sale);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-sale")
+    public String updatesale(Sale sale){
+        boolean check=d_model.UpdateSale(sale);
+        if(check){          
+            return "redirect:getSale.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+   
+    @RequestMapping(value = "/iInsert-sale")
+    public ModelAndView iIsertsale(){
+        ModelAndView model=new ModelAndView("insertsale-admin");
+        Sale sale=new Sale();       
+        model.getModelMap().addAttribute("sale", sale);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-sale", method = RequestMethod.POST)
+    public String Isertsale(Sale sale){
+        boolean check=d_model.insertSale(sale);
+        if(check){          
+            return "redirect:getSale.htm";
+        }
+        else{
+            return "error";
+        }
+    }
 }
