@@ -199,7 +199,6 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
-                                <f:form action="update.htm" modelAttribute="proUpdate" method="POST">
                                     <div class="">          
                                         <table class="table table-bordered">
                                             <thead>
@@ -236,7 +235,6 @@
                                             </tbody>
                                         </table>
                                     </div>      
-                                </f:form>
                                 <a href="iInsert-supplier.htm">Create New Supplier</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->

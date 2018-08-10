@@ -8,9 +8,11 @@ package bkap.Controller;
 import bkap.Connection.D_Connection;
 import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
+import bkap.Entity.Pay;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
 import bkap.Entity.Search;
+import bkap.Entity.Ship;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import bkap.Model.D_Model;
@@ -499,4 +501,119 @@ public class D_Controller {
             return "error";
         }
     }
+    
+    @RequestMapping(value = "/getPay")
+    public ModelAndView getPay(){
+        ModelAndView model=new ModelAndView("pay");
+        List<Pay> pay=d_model.getPay();
+        model.addObject("pay", pay);
+        return model;
+    }
+    
+    @RequestMapping(value = "/delete-pay")
+    public String deletePay(int idPay){
+        boolean check=d_model.deletePay(idPay);
+        if(check){          
+            return "redirect:getPay.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-pay")
+    public ModelAndView iUpdatepay(int idPay){
+        ModelAndView model=new ModelAndView("updatepay-admin");       
+        Pay pay=d_model.getPayById(idPay);      
+        model.getModelMap().addAttribute("pay", pay);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-pay")
+    public String updatepay(Pay pay){
+        boolean check=d_model.UpdatePay(pay);
+        if(check){          
+            return "redirect:getPay.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+   
+    @RequestMapping(value = "/iInsert-pay")
+    public ModelAndView iIsertPay(){
+        ModelAndView model=new ModelAndView("insertpay-admin");
+        Pay pay=new Pay();       
+        model.getModelMap().addAttribute("pay", pay);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-pay", method = RequestMethod.POST)
+    public String IsertPay(Pay pay){
+        boolean check=d_model.insertPay(pay);
+        if(check){          
+            return "redirect:getPay.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/getShip")
+    public ModelAndView getShip(){
+        ModelAndView model=new ModelAndView("ship");
+        List<Ship> ship=d_model.getShip();
+        model.addObject("ship", ship);
+        return model;
+    }
+    
+    @RequestMapping(value = "/delete-ship")
+    public String deleteShip(int idShip){
+        boolean check=d_model.deleteShip(idShip);
+        if(check){          
+            return "redirect:getShip.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-ship")
+    public ModelAndView iUpdateship(int idShip){
+        ModelAndView model=new ModelAndView("updateship-admin");       
+        Ship ship=d_model.getShipById(idShip);      
+        model.getModelMap().addAttribute("ship", ship);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-ship")
+    public String updateship(Ship ship){
+        boolean check=d_model.UpdateShip(ship);
+        if(check){          
+            return "redirect:getShip.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iInsert-ship")
+    public ModelAndView iIsertShip(){
+        ModelAndView model=new ModelAndView("insertship-admin");
+        Ship ship=new Ship();       
+        model.getModelMap().addAttribute("ship", ship);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-ship", method = RequestMethod.POST)
+    public String IsertPay(Ship ship){
+        boolean check=d_model.insertShip(ship);
+        if(check){          
+            return "redirect:getShip.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
 }

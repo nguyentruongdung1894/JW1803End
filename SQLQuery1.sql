@@ -534,3 +534,108 @@ BEGIN
 	SET Trang_thai=@status 	
 	WHERE Ma_binh_luan=@id
 END
+
+--Lây Phương thức thanh toán
+CREATE PROC getPay
+as
+BEGIN
+	SELECT * FROM dbo.Thanh_toan
+END
+
+
+--Test: Exec getSaleById 2
+CREATE PROC getPayById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Thanh_toan kh WHERE kh.Ma_thanh_toan=@Id 
+END
+
+CREATE procedure DeletePay
+@Id int
+AS
+BEGIN
+	DELETE dbo.Thanh_toan
+	WHERE Ma_thanh_toan=@Id
+END
+
+--Tạo user moi
+CREATE procedure Insertpay
+@hinhthuc NVARCHAR(20),
+@trangthai BIT
+as
+BEGIN
+	insert into dbo.Thanh_toan
+	values(@hinhthuc,@trangthai);
+END
+
+--Sửa user
+CREATE PROC Updatepay
+@id int,
+@hinhthuc NVARCHAR(20),
+@trangthai BIT
+AS
+BEGIN
+	UPDATE dbo.Thanh_toan
+	SET 
+		Hinh_thuc_thanh_toan =@hinhthuc,
+		Trang_thai=@trangthai
+	WHERE Ma_thanh_toan=@id
+END
+
+--Lây Phương Ship
+CREATE PROC getShip
+as
+BEGIN
+	SELECT * FROM dbo.Ship
+END
+
+
+--Test: Exec getShipById 1
+CREATE PROC getShipById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Ship kh WHERE kh.Ma_ship=@Id 
+END
+
+CREATE procedure DeleteShip
+@Id int
+AS
+BEGIN
+	DELETE dbo.Ship
+	WHERE Ma_ship=@Id
+END
+
+--Tạo user moi
+CREATE procedure InsertShip
+@tenship NVARCHAR(20),
+@Sodienthoai int,
+@kc int,
+@gia money,
+@trangthai bit
+as
+BEGIN
+	insert into dbo.Ship
+	values(@tenship,@Sodienthoai,@kc,@gia,@trangthai);
+END
+
+--Sửa user
+CREATE PROC UpdateShip
+@id int,
+@tenship NVARCHAR(20),
+@Sodienthoai int,
+@kc int,
+@gia MONEY,
+@trangthai bit
+AS
+BEGIN
+	UPDATE dbo.Ship
+	SET 
+		Ten_ship =@tenship,
+		So_dien_thoai=@Sodienthoai,
+		Khoang_cach =@kc,
+		Gia_ship=@gia,
+		Trang_thai =@trangthai
+	WHERE Ma_ship=@id
+END

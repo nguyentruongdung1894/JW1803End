@@ -155,14 +155,14 @@
         </li>
 
         <li class="">
-            <a href="">
+            <a href="getPay.htm">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Quản lí phương thức thanh toán</span>
             </a>	
         </li>
 
         <li class="">
-            <a href="">
+            <a href="getShip.htm">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Quản lí Ship</span>
             </a>	

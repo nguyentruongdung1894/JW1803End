@@ -9,9 +9,11 @@ import bkap.Connection.D_Connection;
 import bkap.Connection.Pagination;
 import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
+import bkap.Entity.Pay;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
 import bkap.Entity.Search;
+import bkap.Entity.Ship;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import java.sql.CallableStatement;
@@ -873,6 +875,218 @@ public class D_Model {
             call = conn.prepareCall("{call UpdateComment(?,?)}");
             call.setInt(1, cmt.getId());
             call.setBoolean(2, cmt.getStatus());           
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public List<Pay> getPay() {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Pay> pay = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call getPay()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Pay a = new Pay();
+                a.setIdPay(rs.getInt("Ma_thanh_toan"));
+                a.setPaymenttype(rs.getString("Hinh_thuc_thanh_toan"));          
+                a.setStatus(rs.getBoolean("Trang_thai"));       
+                pay.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return pay;
+    }
+    
+    
+    public Pay getPayById(int idPay){
+        Connection conn=null;
+        CallableStatement call=null;
+        Pay pay=new Pay();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getPayById(?)}");
+            call.setInt(1, idPay);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                pay.setIdPay(rs.getInt("Ma_thanh_toan"));
+                pay.setPaymenttype(rs.getString("Hinh_thuc_thanh_toan"));
+                pay.setStatus(rs.getBoolean("Trang_thai"));                         
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return pay;
+    }
+    
+    public boolean insertPay(Pay pay) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call Insertpay(?,?)}");
+            call.setString(1, pay.getPaymenttype());
+            call.setBoolean(2, pay.isStatus());            
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdatePay(Pay pay) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call Updatepay(?,?,?)}");
+            call.setInt(1, pay.getIdPay());
+            call.setString(2, pay.getPaymenttype());
+            call.setBoolean(3, pay.isStatus());     
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean deletePay(int idPay) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeletePay(?)}");
+            call.setInt(1, idPay);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public List<Ship> getShip() {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Ship> ship = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call getShip()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Ship a = new Ship();
+                a.setIdShip(rs.getInt("Ma_ship"));
+                a.setNameShip(rs.getString("Ten_ship"));          
+                a.setPhone(rs.getInt("So_dien_thoai"));   
+                a.setDistance(rs.getInt("Khoang_cach"));
+                a.setPrice(rs.getDouble("Gia_ship"));          
+                a.setBit(rs.getBoolean("Trang_thai"));   
+                ship.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return ship;
+    }
+    
+    
+    public Ship getShipById(int idShip){
+        Connection conn=null;
+        CallableStatement call=null;
+        Ship ship=new Ship();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getShipById(?)}");
+            call.setInt(1, idShip);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                ship.setIdShip(rs.getInt("Ma_ship"));
+                ship.setNameShip(rs.getString("Ten_ship"));          
+                ship.setPhone(rs.getInt("So_dien_thoai"));   
+                ship.setDistance(rs.getInt("Khoang_cach"));
+                ship.setPrice(rs.getDouble("Gia_ship"));          
+                ship.setBit(rs.getBoolean("Trang_thai"));                        
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return ship;
+    }
+    
+    public boolean insertShip(Ship ship) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertShip(?,?,?,?,?)}");
+            call.setString(1, ship.getNameShip());
+            call.setInt(2, ship.getPhone());  
+            call.setInt(3, ship.getDistance());
+            call.setDouble(4, ship.getPrice());  
+            call.setBoolean(5, ship.isBit());
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateShip(Ship ship) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateShip(?,?,?,?,?,?)}");
+            call.setInt(1, ship.getIdShip());
+            call.setString(2, ship.getNameShip());
+            call.setInt(3, ship.getPhone());  
+            call.setInt(4, ship.getDistance());
+            call.setDouble(5, ship.getPrice());  
+            call.setBoolean(6, ship.isBit());
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean deleteShip(int idShip) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteShip(?)}");
+            call.setInt(1, idShip);
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

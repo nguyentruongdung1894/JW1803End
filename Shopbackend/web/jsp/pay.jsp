@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Supplier</title>
+        <title>Pay</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -203,29 +203,25 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>supplierId</th>
-                                                    <th>supplierName</th>
-                                                    <th>address</th>
-                                                    <th>phone</th>
-                                                    <th>fax</th>                                                                                            
+                                                    <th>idPay</th>
+                                                    <th>paymenttype</th>
+                                                    <th>status</th>                                                                                       
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody id="id01">
-                                                <c:forEach items="${supplier}" var="supplier">
+                                                <c:forEach items="${pay}" var="pay">
                                                     <tr>
-                                                        <td>${supplier.supplierId}</td>
-                                                        <td>${supplier.supplierName}</td>
-                                                        <td>${supplier.address}</td>
-                                                        <td>${supplier.phone}</td>
-                                                        <td>${supplier.fax}</td>                                                                                                                                                       
+                                                        <td>${pay.idPay}</td>
+                                                        <td>${pay.paymenttype}</td>
+                                                        <td>${pay.status}</td>                                                                                                                                                   
                                                         <td>
                                                             <div class="hidden-sm hidden-xs action-buttons">
-                                                                <a class="green" href="iUpdate-supplier.htm?idSupplier=${supplier.supplierId}">
+                                                                <a class="green" href="iUpdate-pay.htm?idPay=${pay.idPay}">
                                                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                                 </a>
 
-                                                                <a class="red" href="delete-supplier.htm?idSupplier=${supplier.supplierId}">
+                                                                <a class="red" href="delete-pay.htm?idPay=${pay.idPay}">
                                                                     <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                                 </a>                                                          
                                                             </div>
@@ -235,7 +231,7 @@
                                             </tbody>
                                         </table>
                                     </div>      
-                                <a href="iInsert-supplier.htm">Create New Supplier</a>
+                                <a href="iInsert-pay.htm">Create New Sale</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
