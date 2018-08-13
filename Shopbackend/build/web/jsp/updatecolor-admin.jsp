@@ -1,18 +1,20 @@
 <%-- 
-    Document   : AccountAdmin
-    Created on : Jul 18, 2018, 11:14:45 AM
+    Document   : insertProduct
+    Created on : Jul 3, 2018, 2:44:45 PM
     Author     : ScorPius 31
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Ace Admin</title>
+        <title>Insert - Color</title>
 
         <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -31,48 +33,7 @@
 
         <!-- ace styles -->
         <link rel="stylesheet" href="../jsp/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-        <style> 
-            form.example input[type=text] {
-                padding: 5px;
-                font-size: 15px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                float: left;
-                width: 10%;
-                background: #f1f1f1;
-                margin-bottom: 10px;
-                -webkit-transition: width 0.4s ease-in-out;
-                transition: width 0.4s ease-in-out;
-            }
-            form.example input[type=text]:focus {
-                width: 50%;
-            }
-            form.example button {
-                float: left;
-                width: 40px;
-                padding: 5px;
-                background: #2196F3;
-                color: white;
-                font-size: 15px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-left: none;
-                cursor: pointer;
-                margin-bottom: 10px;
-            }
-
-            form.example button:hover {
-                background: #0b7dda;
-            }
-
-            form.example::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-        </style>
     </head>
-
     <body class="no-skin">
         <jsp:include flush="true" page="navbar-admin.jsp"/>
 
@@ -105,7 +66,7 @@
                             <li>
                                 <a href="">Tables</a>
                             </li>
-                            <li class="active">jqGrid plugin</li>
+                            <li class="active">Product - admin</li>
                         </ul><!-- /.breadcrumb -->
 
                         <div class="nav-search" id="nav-search">
@@ -188,77 +149,48 @@
 
                         <div class="page-header">
                             <h1>
-                                Admin
+                                Product
                                 <small>
                                     <i class="ace-icon fa fa-angle-double-right"></i>
-                                    Dynamic tables and grids using Admin plugin
+                                    Dynamic tables and grids using Product plugin
                                 </small>
                             </h1>
                         </div><!-- /.page-header -->
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                
-                                <f:form class="example" action="searchuser.htm" method="POST" modelAttribute="searchuser">                               
-                                    <f:input path="str" type="text" placeholder="Search.." name="search"/>
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </f:form>
-
-                                <div class="">          
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="">
-                                                <th>Id Admin</th>
-                                                <th>Name</th>
-                                                <th>User</th>
-                                                <th>Password</th>
-                                                <th>Address</th>
-                                                <th>Telephone</th>
-                                                <th>Email</th>
-                                                <th>Birthday</th>
-                                                <th>Role</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="id01">
-                                            <c:forEach items="${listAdmin}" var="user">
-                                                <tr>
-                                                    <td class="sort">${user.idCustomer}</td>
-                                                    <td>${user.nameCustomer}</td>
-                                                    <td>${user.userName}</td>
-                                                    <td>${user.password}</td>
-                                                    <td>${user.address}</td>
-                                                    <td>${user.telephone}</td>
-                                                    <td>${user.email}</td>
-                                                    <td>${user.birthday}</td>
-                                                    <td>${user.role}</td>
-                                                    <td>
-                                                        <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="#">
-                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
-                                                                <a class="green" href="iUpdate-User.htm?userId=${user.idCustomer}">
-                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="delete-user.htm?userId=${user.idCustomer}">
-                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>                                               
-                                            </c:forEach>
-                                        </tbody>
+                                <f:form action="update-color.htm" modelAttribute="color" method="POST">
+                                    <table>
+                                        <tr>
+                                            <td>id</td>
+                                            <td><f:input path="id"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>nameColor</td>
+                                            <td><f:input path="nameColor"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>status</td>
+                                            <td><f:select path="status">
+                                                    <f:option value="true" label="Active"/>
+                                                    <f:option value="false" label="InActive"/>
+                                                </f:select></td>
+                                        </tr> 
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                <input type="submit" value="Update"/>
+                                                <input type="reset" value="Reset"/>
+                                                <input type="button" value="Back" onclick="history.go(-1)"/>
+                                            </td>
+                                        </tr>
                                     </table>
-                                </div>    
-                                <a href="iInsert-User.htm">Create New Admin</a>
-                                <!-- PAGE CONTENT ENDS -->
+                                </f:form>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.page-content -->
                 </div>
             </div><!-- /.main-content -->
+
 
             <jsp:include flush="true" page="footer-admin.jsp"/>
 
@@ -270,7 +202,7 @@
         <script src="../jsp/assets/js/jquery.2.1.1.min.js"></script>
 
         <script type="text/javascript">
-                            window.jQuery || document.write("<script src='../jsp/assets/js/jquery.min.js'>" + "<" + "/script>");
+                                                    window.jQuery || document.write("<script src='../jsp/assets/js/jquery.min.js'>" + "<" + "/script>");
         </script>
 
         <script type="text/javascript">
@@ -287,6 +219,5 @@
         <!-- ace scripts -->
         <script src="../jsp/assets/js/ace-elements.min.js"></script>
         <script src="../jsp/assets/js/ace.min.js"></script>
-
     </body>
 </html>

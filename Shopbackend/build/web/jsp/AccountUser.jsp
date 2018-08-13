@@ -209,15 +209,15 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="">
-                                                <th>idCustomer</th>
-                                                <th>nameCustomer</th>
-                                                <th>userName</th>
-                                                <th>password</th>
-                                                <th>address</th>
-                                                <th>telephone</th>
-                                                <th>email</th>
-                                                <th>birthday</th>
-                                                <th>role</th>
+                                                <th>Id User</th>
+                                                <th>Name User</th>
+                                                <th>UserName</th>
+                                                <th>Password</th>
+                                                <th>Address</th>
+                                                <th>Telephone</th>
+                                                <th>Email</th>
+                                                <th>Birthday</th>
+                                                <th>Role</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -252,7 +252,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="iInsert-User.htm">Create New Product</a>
+                                <a href="iInsert-User.htm">Create New User</a>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->

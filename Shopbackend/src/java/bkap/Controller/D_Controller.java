@@ -6,13 +6,16 @@
 package bkap.Controller;
 
 import bkap.Connection.D_Connection;
+import bkap.Entity.Color;
 import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
+import bkap.Entity.Order;
 import bkap.Entity.Pay;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
 import bkap.Entity.Search;
 import bkap.Entity.Ship;
+import bkap.Entity.Size;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import bkap.Model.D_Model;
@@ -606,7 +609,7 @@ public class D_Controller {
     }
     
     @RequestMapping(value = "/insert-ship", method = RequestMethod.POST)
-    public String IsertPay(Ship ship){
+    public String IsertShip(Ship ship){
         boolean check=d_model.insertShip(ship);
         if(check){          
             return "redirect:getShip.htm";
@@ -616,4 +619,125 @@ public class D_Controller {
         }
     }
     
+    @RequestMapping(value = "/getSize")
+    public ModelAndView getSize(){
+        ModelAndView model=new ModelAndView("size");
+        List<Size> size=d_model.getSize();
+        model.addObject("size", size);
+        return model;
+    }
+    
+    @RequestMapping(value = "/delete-size")
+    public String deleteSize(int idSize){
+        boolean check=d_model.DeleteSize(idSize);
+        if(check){          
+            return "redirect:getSize.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-size")
+    public ModelAndView iUpdatesize(int idSize){
+        ModelAndView model=new ModelAndView("updatesize-admin");       
+        Size size=d_model.getSizeById(idSize);      
+        model.getModelMap().addAttribute("size", size);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-size")
+    public String updatesize(Size size){
+        boolean check=d_model.UpdateSize(size);
+        if(check){          
+            return "redirect:getSize.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iInsert-size")
+    public ModelAndView iIsertSize(){
+        ModelAndView model=new ModelAndView("insertsize-admin");
+        Size size=new Size();       
+        model.getModelMap().addAttribute("size", size);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-size", method = RequestMethod.POST)
+    public String IsertSize(Size size){
+        boolean check=d_model.insertSize(size);
+        if(check){          
+            return "redirect:getSize.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/getColor")
+    public ModelAndView getColor(){
+        ModelAndView model=new ModelAndView("color");
+        List<Color> color=d_model.getColor();
+        model.addObject("color", color);
+        return model;
+    }
+    
+    @RequestMapping(value = "/delete-color")
+    public String deleteColor(int idColor){
+        boolean check=d_model.DeleteColor(idColor);
+        if(check){          
+            return "redirect:getColor.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iUpdate-color")
+    public ModelAndView iUpdateColor(int idColor){
+        ModelAndView model=new ModelAndView("updatecolor-admin");       
+        Color color=d_model.getColorById(idColor);      
+        model.getModelMap().addAttribute("color", color);      
+        return model;
+    }
+    
+    @RequestMapping(value = "/update-color")
+    public String updateColor(Color color){
+        boolean check=d_model.UpdateColor(color);
+        if(check){          
+            return "redirect:getColor.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/iInsert-color")
+    public ModelAndView iIsertColor(){
+        ModelAndView model=new ModelAndView("insertcolor-admin");
+        Color color=new Color();       
+        model.getModelMap().addAttribute("color", color);
+        return model;
+    }
+    
+    @RequestMapping(value = "/insert-color", method = RequestMethod.POST)
+    public String IsertColor(Color color){
+        boolean check=d_model.insertColor(color);
+        if(check){          
+            return "redirect:getColor.htm";
+        }
+        else{
+            return "error";
+        }
+    }
+    
+    @RequestMapping(value = "/getOrder")
+    public ModelAndView getOrder(){
+        ModelAndView model=new ModelAndView("order");
+        List<Order> order=d_model.getOrder();
+        model.addObject("order", order);
+        return model;
+    }
 }

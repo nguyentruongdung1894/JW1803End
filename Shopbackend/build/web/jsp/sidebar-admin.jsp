@@ -111,14 +111,21 @@
                 <span class="menu-text">Quản lí bình luận</span>
             </a>	
         </li>
-
+        
         <li class="">
-            <a href="">
+            <a href="getSize.htm">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Quản lí Ưa thích</span>
+                <span class="menu-text">Quản lí size</span>
             </a>	
         </li>
 
+        <li class="">
+            <a href="getColor.htm">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Quản lí màu sắc</span>
+            </a>	
+        </li>
+        
         <li class="">
             <a href="">
                 <i class="menu-icon fa fa-list"></i>
@@ -127,32 +134,11 @@
         </li>     
 
         <li class="">
-            <a href="">
+            <a href="getOrder.htm">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"> Quản lí hóa đơn</span>
             </a>	
-        </li>
-
-        <li class="">
-            <a href="">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text"> Quản lí hóa đơn chi tiết</span>
-            </a>	
-        </li>       
-
-        <li class="">
-            <a href="">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Quản lí size</span>
-            </a>	
-        </li>
-
-        <li class="">
-            <a href="">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Quản lí màu sắc</span>
-            </a>	
-        </li>
+        </li>      
 
         <li class="">
             <a href="getPay.htm">

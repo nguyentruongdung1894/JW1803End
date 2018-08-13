@@ -639,3 +639,110 @@ BEGIN
 		Trang_thai =@trangthai
 	WHERE Ma_ship=@id
 END
+
+--Lây Phương Size
+CREATE PROC getSize
+AS	
+BEGIN
+	SELECT * FROM dbo.Size
+END
+
+
+--Test: Exec getShipById 1
+CREATE PROC getSizeById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Size kh WHERE kh.Ma_size=@Id 
+END
+
+CREATE procedure DeleteSize
+@Id int
+AS
+BEGIN
+	DELETE dbo.Size
+	WHERE Ma_size=@Id
+END
+
+--Tạo user moi
+CREATE procedure InsertSize
+@namesize nvarchar(20),
+@trangthai bit
+as
+BEGIN
+	insert into dbo.Size
+	values(@namesize,@trangthai);
+END
+
+--Sửa user
+CREATE PROC UpdateSize
+@id int,
+@namesize nvarchar(20),
+@trangthai bit
+AS
+BEGIN
+	UPDATE dbo.Size
+	SET 
+		Ten_size =@namesize,
+		Trang_thai=@trangthai
+	WHERE Ma_size=@id
+END
+
+CREATE PROC getColor
+AS	
+BEGIN
+	SELECT * FROM dbo.Mau_sac
+END
+
+
+--Test: Exec getShipById 1
+CREATE PROC getColorById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM dbo.Mau_sac kh WHERE kh.Ma_mau=@Id 
+END
+
+CREATE procedure DeleteColor
+@Id int
+AS
+BEGIN
+	DELETE dbo.Mau_sac
+	WHERE Ma_mau=@Id
+END
+
+--Tạo user moi
+CREATE procedure InsertColor
+@namecolor nvarchar(20),
+@trangthai bit
+as
+BEGIN
+	insert into dbo.Mau_sac
+	values(@namecolor,@trangthai);
+END
+
+--Sửa user
+CREATE PROC UpdateColor
+@id int,
+@namecolor nvarchar(20),
+@trangthai bit
+AS
+BEGIN
+	UPDATE dbo.Mau_sac
+	SET 
+		Ten_mau =@namecolor,
+		Trang_thai=@trangthai
+	WHERE Ma_mau=@id
+END
+
+CREATE PROC GetOrder
+AS
+BEGIN
+	SELECT * FROM dbo.Hoa_don hd WHERE hd.Tinh_trang=1
+END
+
+CREATE PROC GetOrderDetail
+AS
+BEGIN
+	SELECT * FROM dbo.Hoa_don_chi_tiet
+END

@@ -7,13 +7,16 @@ package bkap.Model;
 
 import bkap.Connection.D_Connection;
 import bkap.Connection.Pagination;
+import bkap.Entity.Color;
 import bkap.Entity.Comment;
 import bkap.Entity.D_banner;
+import bkap.Entity.Order;
 import bkap.Entity.Pay;
 import bkap.Entity.ProductAdmin;
 import bkap.Entity.Sale;
 import bkap.Entity.Search;
 import bkap.Entity.Ship;
+import bkap.Entity.Size;
 import bkap.Entity.Supplier;
 import bkap.Entity.UserAdmin;
 import java.sql.CallableStatement;
@@ -1095,5 +1098,233 @@ public class D_Model {
             D_Connection.closeDataBase(conn, call);
         }
         return true;
+    }
+    
+    public List<Size> getSize() {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Size> size = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call getSize()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Size a = new Size();
+                a.setId(rs.getInt("Ma_size"));
+                a.setNameSize(rs.getString("Ten_size"));          
+                a.setStatus(rs.getBoolean("Trang_thai"));   
+                size.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return size;
+    }
+    
+    
+    public Size getSizeById(int idSize){
+        Connection conn=null;
+        CallableStatement call=null;
+        Size size=new Size();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getSizeById(?)}");
+            call.setInt(1, idSize);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                size.setId(rs.getInt("Ma_size"));
+                size.setNameSize(rs.getString("Ten_size"));          
+                size.setStatus(rs.getBoolean("Trang_thai"));                          
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return size;
+    }
+    
+    public boolean insertSize(Size size) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertSize(?,?)}");
+            call.setString(1, size.getNameSize());
+            call.setBoolean(2, size.isStatus());  
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateSize(Size size) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateSize(?,?,?)}");
+            call.setInt(1, size.getId());
+            call.setString(2, size.getNameSize());
+            call.setBoolean(3, size.isStatus());  
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean DeleteSize(int idSize) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteSize(?)}");
+            call.setInt(1, idSize);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+        public List<Color> getColor() {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Color> color = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call getColor()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Color a = new Color();
+                a.setId(rs.getInt("Ma_mau"));
+                a.setNameColor(rs.getString("Ten_mau"));          
+                a.setStatus(rs.getBoolean("Trang_thai"));   
+                color.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return color;
+    }
+    
+    
+    public Color getColorById(int idColor){
+        Connection conn=null;
+        CallableStatement call=null;
+        Color color=new Color();
+        try {
+            conn=D_Connection.openDataBase();
+            call=conn.prepareCall("{call getColorById(?)}");
+            call.setInt(1, idColor);
+            ResultSet rs=call.executeQuery();
+            if(rs.next()){
+                color.setId(rs.getInt("Ma_mau"));
+                color.setNameColor(rs.getString("Ten_mau"));          
+                color.setStatus(rs.getBoolean("Trang_thai"));                          
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            D_Connection.closeDataBase(conn, call);
+        }
+        return color;
+    }
+    
+    public boolean insertColor(Color color) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call InsertColor(?,?)}");
+            call.setString(1, color.getNameColor());
+            call.setBoolean(2, color.isStatus());  
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean UpdateColor(Color color) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call UpdateColor(?,?,?)}");
+            call.setInt(1, color.getId());
+            call.setString(2, color.getNameColor());
+            call.setBoolean(3, color.isStatus());  
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    public boolean DeleteColor(int idColor) {
+        Connection conn = null;
+        CallableStatement call = null;
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call DeleteColor(?)}");
+            call.setInt(1, idColor);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return true;
+    }
+    
+    
+    public List<Order> getOrder() {
+        Connection conn = null;
+        CallableStatement call = null;
+        List<Order> order = new ArrayList<>();
+        try {
+            conn = D_Connection.openDataBase();
+            call = conn.prepareCall("{call GetOrder()}");          
+            ResultSet rs = call.executeQuery();
+            while (rs.next()) {
+                Order a = new Order();
+                a.setId(rs.getInt("Ma_hoa_don"));
+                a.setIdCustomer(rs.getInt("Ma_khach_hang"));          
+                a.setQuantity(rs.getDouble("Tong_tien"));   
+                a.setDatebuy(rs.getDate("Ngay_mua"));
+                a.setIdShip(rs.getInt("Ma_ship"));          
+                a.setIdPay(rs.getInt("Ma_thanh_toan")); 
+                a.setStatus(rs.getBoolean("Tinh_trang"));
+                order.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            D_Connection.closeDataBase(conn, call);
+        }
+        return order;
     }
 }
