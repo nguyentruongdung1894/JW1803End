@@ -203,12 +203,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>idShip</th>
-                                                    <th>nameShip</th>
-                                                    <th>phone</th>  
-                                                    <th>distance</th>
-                                                    <th>price</th>
-                                                    <th>status</th>  
+                                                    <th>Id Ship</th>
+                                                    <th>Name Ship</th>
+                                                    <th>Telephone</th>  
+                                                    <th>Distance</th>
+                                                    <th>Price</th>
+                                                    <th>Status</th>  
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -237,7 +237,7 @@
                                             </tbody>
                                         </table>
                                     </div>      
-                                <a href="iInsert-ship.htm">Create New Sale</a>
+                                <a href="iInsert-ship.htm">Create New Ship</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

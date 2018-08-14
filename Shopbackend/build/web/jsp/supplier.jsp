@@ -203,11 +203,11 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>supplierId</th>
-                                                    <th>supplierName</th>
-                                                    <th>address</th>
-                                                    <th>phone</th>
-                                                    <th>fax</th>                                                                                            
+                                                    <th>Id</th>
+                                                    <th>Supplier Name</th>
+                                                    <th>Address</th>
+                                                    <th>Phone</th>
+                                                    <th>Fax</th>                                                                                            
                                                     <th></th>
                                                 </tr>
                                             </thead>

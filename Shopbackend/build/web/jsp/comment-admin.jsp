@@ -205,13 +205,13 @@
                                         <thead>
                                             <tr class="">
                                                 <th>id</th>
-                                                <th>idCustomer</th>
-                                                <th>idProduct</th>
-                                                <th>nameProduct</th>
-                                                <th>nameCustomer</th>
-                                                <th>content</th>
-                                                <th>dateComment</th>
-                                                <th>status</th>                                               
+                                                <th>Id User</th>
+                                                <th>Id Product</th>
+                                                <th>Name Product</th>
+                                                <th>Name User</th>
+                                                <th>Content</th>
+                                                <th>Date Comment</th>
+                                                <th>Status</th>                                               
                                                 <th></th>
                                             </tr>
                                         </thead>

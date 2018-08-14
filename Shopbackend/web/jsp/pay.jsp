@@ -203,9 +203,9 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>idPay</th>
-                                                    <th>paymenttype</th>
-                                                    <th>status</th>                                                                                       
+                                                    <th>Id Pay</th>
+                                                    <th>Payment Type</th>
+                                                    <th>Status</th>                                                                                       
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -231,7 +231,7 @@
                                             </tbody>
                                         </table>
                                     </div>      
-                                <a href="iInsert-pay.htm">Create New Sale</a>
+                                <a href="iInsert-pay.htm">Create New Pay</a>
 <!--                                <a href="">${url}</a>-->
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->

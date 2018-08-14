@@ -244,7 +244,7 @@
                                                     <td>${P.productId}</td>
                                                     <td>${P.categoryId}</td>
                                                     <td>${P.productName}</td>
-                                                    <td>${P.productImage}</td>
+                                                    <td><img src="${P.productImage}" alt="${P.productName}"></td>
                                                     <td>${P.date}</td>
                                                     <td>${P.quantity}</td>
                                                     <td>${P.description}</td>

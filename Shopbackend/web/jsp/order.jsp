@@ -203,13 +203,13 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>id</th>
-                                                    <th>idCustomer</th>
-                                                    <th>quantity</th>
-                                                    <th>datebuy</th>
-                                                    <th>idShip</th>
-                                                    <th>idPay</th>
-                                                    <th>status</th>                                                                                       
+                                                    <th>Id</th>
+                                                    <th>Id User</th>
+                                                    <th>Quantity</th>
+                                                    <th>Date Buy</th>
+                                                    <th>Id Ship</th>
+                                                    <th>Id Pay</th>
+                                                    <th>Status</th>                                                                                       
                                                     <th></th>
                                                 </tr>
                                             </thead>

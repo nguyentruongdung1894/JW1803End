@@ -203,10 +203,10 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>saleid</th>
-                                                    <th>dateInput</th>
-                                                    <th>dateOutput</th>
-                                                    <th>levelSale</th>                                                                                           
+                                                    <th>Id</th>
+                                                    <th>Date Input</th>
+                                                    <th>Date Output</th>
+                                                    <th>LevelSale</th>                                                                                           
                                                     <th></th>
                                                 </tr>
                                             </thead>

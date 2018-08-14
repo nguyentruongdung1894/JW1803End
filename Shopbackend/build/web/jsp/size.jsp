@@ -203,9 +203,9 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="">
-                                                    <th>id</th>
-                                                    <th>nameSize</th>
-                                                    <th>status</th>                                                                                       
+                                                    <th>Id</th>
+                                                    <th>Name Size</th>
+                                                    <th>Status</th>                                                                                       
                                                     <th></th>
                                                 </tr>
                                             </thead>
