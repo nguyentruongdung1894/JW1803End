@@ -162,35 +162,35 @@
                                 <f:form action="update-Cmt.htm" modelAttribute="cmt" method="POST">
                                     <table>
                                         <tr>
-                                            <td>id</td>
+                                            <td>Id</td>
                                             <td><f:input path="id"/></td>
                                         </tr>
                                         <tr>
-                                            <td>idCustomer</td>
+                                            <td>Id User</td>
                                             <td><f:input path="idCustomer"/></td>
                                         </tr>
                                         <tr>
-                                            <td>idProduct</td>
+                                            <td>Id Product</td>
                                             <td><f:input path="idProduct"/></td>
                                         </tr>
                                         <tr>
-                                            <td>nameProduct</td>
+                                            <td>Name Product</td>
                                             <td><f:input path="nameProduct"/></td>
                                         </tr>
                                         <tr>
-                                            <td>nameCustomer</td>
+                                            <td>Name Customer</td>
                                             <td><f:input path="nameCustomer"/></td>
                                         </tr>
                                         <tr>
-                                            <td>content</td>
+                                            <td>Content</td>
                                             <td><f:input path="content"/></td>
                                         </tr>
                                         <tr>
-                                            <td>dateComment</td>
+                                            <td>Date Comment</td>
                                             <td><f:input path="dateComment"/></td>
                                         </tr>
                                         <tr>
-                                            <td>status</td>
+                                            <td>Status</td>
                                             <td><f:select path="status">
                                                     <f:option value="true" label="Active"/>
                                                     <f:option value="false" label="InActive"/>

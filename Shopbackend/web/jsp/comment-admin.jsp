@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : AccountAdmin
     Created on : Jul 18, 2018, 11:14:45 AM
     Author     : ScorPius 31
@@ -228,10 +228,6 @@
                                                     <td>${list.status}</td>                                                                                                     
                                                     <td>
                                                         <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="">
-                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
-
                                                             <a class="green" href="iUpdate-Cmt.htm?id=${list.id}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>                                                            

@@ -825,7 +825,7 @@ public class D_Model {
             ResultSet rs = call.executeQuery();
             while (rs.next()) {
                 Comment a = new Comment();
-                a.setId(rs.getInt("Ma_binh_luan"));   
+                a.setId(rs.getInt("Id"));   
                 a.setIdCustomer(rs.getInt("Ma_khach_hang"));   
                 a.setIdProduct(rs.getInt("Ma_san_pham"));                      
                 a.setNameProduct(rs.getString("Ten_san_pham"));
@@ -853,7 +853,7 @@ public class D_Model {
             call.setInt(1, id);
             ResultSet rs=call.executeQuery();
             if(rs.next()){
-                cmt.setId(rs.getInt("Ma_binh_luan"));   
+                cmt.setId(rs.getInt("Id"));   
                 cmt.setIdCustomer(rs.getInt("Ma_khach_hang"));   
                 cmt.setIdProduct(rs.getInt("Ma_san_pham"));                      
                 cmt.setNameProduct(rs.getString("Ten_san_pham"));
@@ -875,9 +875,13 @@ public class D_Model {
         CallableStatement call = null;
         try {
             conn = D_Connection.openDataBase();
-            call = conn.prepareCall("{call UpdateComment(?,?)}");
+            call = conn.prepareCall("{call UpdateComment(?,?,?,?,?,?)}");
             call.setInt(1, cmt.getId());
-            call.setBoolean(2, cmt.getStatus());           
+            call.setInt(2, cmt.getIdCustomer());
+            call.setInt(3, cmt.getIdProduct());
+            call.setDate(4, cmt.getDateComment());
+            call.setString(5, cmt.getContent());         
+            call.setBoolean(6, cmt.getStatus());           
             call.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -1327,4 +1331,5 @@ public class D_Model {
         }
         return order;
     }
+    
 }

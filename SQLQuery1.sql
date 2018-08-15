@@ -507,32 +507,41 @@ END
 ALTER PROC getComment
 AS
 BEGIN
-	SELECT bl.Ma_binh_luan,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	SELECT bl.Id,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
 	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
 	WHERE bl.Trang_thai=1 AND sp.Trang_Thai=1
 END
 
 --Test: Exec getCommentById 1
-CREATE PROC getCommentById
+ALTER PROC getCommentById
 @Id int	
 AS
 BEGIN
-	SELECT bl.Ma_binh_luan,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
+	SELECT bl.Id,bl.Ma_khach_hang,bl.Ma_san_pham,sp.Ten_san_pham,kh.Ten_khach_hang,bl.content,bl.Ngay_binh_luan,bl.Trang_thai FROM dbo.SanPham sp INNER JOIN dbo.Binh_luan bl ON bl.Ma_san_pham = sp.Ma_san_pham
 	INNER JOIN dbo.Khach_hang kh ON kh.Ma_khach_hang = bl.Ma_khach_hang
-	WHERE bl.Ma_binh_luan=@Id AND bl.Trang_thai=1 AND sp.Trang_Thai=1
+	WHERE bl.Id=@Id AND bl.Trang_thai=1 AND sp.Trang_Thai=1
 END
 
 
 
 --Test: Exec UpdateComment 1,1
-CREATE PROC UpdateComment
+ALTER PROC UpdateComment
 @id int,
+@makhach INT,
+@masp INT,
+@ngay DATE,
+@noidung NVARCHAR(200),
 @status INT
 AS
 BEGIN
 	UPDATE dbo.Binh_luan
-	SET Trang_thai=@status 	
-	WHERE Ma_binh_luan=@id
+	SET 
+	Ma_khach_hang=@makhach,
+	Ma_san_pham=@masp,
+	Ngay_binh_luan=@ngay ,
+	content=@noidung,
+	Trang_thai=@status
+	WHERE Id=@id
 END
 
 --Lây Phương thức thanh toán

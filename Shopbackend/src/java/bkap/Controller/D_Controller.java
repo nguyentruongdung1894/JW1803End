@@ -383,7 +383,7 @@ public class D_Controller {
     public String updateCmt(Comment cmt){
         boolean check=d_model.UpdatCmt(cmt);
         if(check){          
-            return "redirect:iUpdate-Cmt.htm";
+            return "redirect:getcomment.htm";
         }
         else{
             return "error";
