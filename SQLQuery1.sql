@@ -450,6 +450,7 @@ END
 
 CREATE procedure DeleteSale
 @Id int
+
 AS
 BEGIN
 	DELETE dbo.Khuyenmai
@@ -754,4 +755,16 @@ CREATE PROC GetOrderDetail
 AS
 BEGIN
 	SELECT * FROM dbo.Hoa_don_chi_tiet
+END
+
+CREATE PROC getMausac
+AS
+BEGIN 
+	SELECT * FROM dbo.Mau_sac_san_pham 
+END
+
+CREATE PROC getSizesp
+AS
+BEGIN 
+	SELECT * FROM dbo.Size_san_pham 
 END

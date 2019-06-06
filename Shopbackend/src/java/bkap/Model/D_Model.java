@@ -1330,6 +1330,5 @@ public class D_Model {
             D_Connection.closeDataBase(conn, call);
         }
         return order;
-    }
-    
+    }   
 }
